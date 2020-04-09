@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "167511317591",
+    "firebase_url": "https://augieathleticsapp.firebaseio.com",
+    "project_id": "augieathleticsapp",
+    "storage_bucket": "augieathleticsapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167511317591:android:5e1f433ee34c1912dc5712",
+        "android_client_info": {
+          "package_name": "com.example.augieathletics"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "167511317591-mf4rs2uc4vuqjaotdlqfns39qvkf572c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF81daLBdcArhlznrMlHGV_LOqgwyp28A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "167511317591-mf4rs2uc4vuqjaotdlqfns39qvkf572c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
