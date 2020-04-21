@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.slideshow;
+package edu.augustanacsc490spring2020.augieathletics.ui.teams;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
