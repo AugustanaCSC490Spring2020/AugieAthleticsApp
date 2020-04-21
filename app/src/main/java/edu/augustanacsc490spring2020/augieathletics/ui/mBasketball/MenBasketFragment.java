@@ -1,5 +1,6 @@
 package edu.augustanacsc490spring2020.augieathletics.ui.mBasketball;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,4 +33,12 @@ public class MenBasketFragment extends Fragment {
         });
         return root;
     }
+
+    public void goToRoster(View view) {
+        Intent intent = new Intent(getActivity(), RosterActivity.class);
+        startActivity(intent);
+
+    }
+
+
 }

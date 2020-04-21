@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import edu.augustanacsc490spring2020.augieathletics.GameActivity;
 import edu.augustanacsc490spring2020.augieathletics.MainActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
 import edu.augustanacsc490spring2020.augieathletics.ui.login.LoginViewModel;
