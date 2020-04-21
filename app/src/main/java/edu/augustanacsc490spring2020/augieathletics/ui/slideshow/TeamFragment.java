@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import edu.augustanacsc490spring2020.augieathletics.R;
 
-public class SlideshowFragment extends Fragment {
+public class TeamFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private TeamViewModel teamViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        teamViewModel =
+                ViewModelProviders.of(this).get(TeamViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_team, container, false);
+        final TextView textView = root.findViewById(R.id.text_team);
+        teamViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
