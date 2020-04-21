@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.gallery;
+package edu.augustanacsc490spring2020.augieathletics.ui.mBasketball;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import edu.augustanacsc490spring2020.augieathletics.R;
 
-public class GalleryFragment extends Fragment {
+public class MenBasketFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private MenBasketViewModel menBasketViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        menBasketViewModel =
+                ViewModelProviders.of(this).get(MenBasketViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_mbasket, container, false);
+        final TextView textView = root.findViewById(R.id.text_mbasket);
+        menBasketViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

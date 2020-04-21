@@ -30,10 +30,10 @@
 <!--    </fragment>-->
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="edu.augustanacsc490spring2020.augieathletics.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_mbasket"
+        android:name="edu.augustanacsc490spring2020.augieathletics.ui.mBasketball.MenBasketFragment"
+        android:label="@string/mbasket"
+        tools:layout="@layout/fragment_mbasket" />
 
     <fragment
         android:id="@+id/nav_team"

@@ -23,4 +23,6 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="teams">Teams</string>
+    <string name="appTitle">Augustana Athletics</string>
+    <string name="mbasket">Men\'s Basketball</string>
 </resources>
