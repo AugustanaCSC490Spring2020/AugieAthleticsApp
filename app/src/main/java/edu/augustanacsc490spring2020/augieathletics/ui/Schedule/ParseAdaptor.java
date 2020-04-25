@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import edu.augustanacsc490spring2020.augieathletics.R;
 
 public class ParseAdaptor extends RecyclerView.Adapter<ParseAdaptor.ViewHolder> {
-    private ArrayList<ParseItems> parseItems= new ArrayList<>();
+    private ArrayList<ParseItems> parseItems;
     private Context contextt;
 
     public ParseAdaptor(ArrayList<ParseItems> parseItems, Context contextt) {
@@ -29,8 +28,7 @@ public class ParseAdaptor extends RecyclerView.Adapter<ParseAdaptor.ViewHolder> 
     @NonNull
     @Override
     public ParseAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_current_fixtures,parent,false);
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parseitems,parent,false);
         return new ViewHolder(view);
     }
 
@@ -43,7 +41,8 @@ public class ParseAdaptor extends RecyclerView.Adapter<ParseAdaptor.ViewHolder> 
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return parseItems.size();
     }
 
@@ -54,8 +53,8 @@ public class ParseAdaptor extends RecyclerView.Adapter<ParseAdaptor.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgV= itemView.findViewById(R.id.imageViewF);
-            txtV=itemView.findViewById(R.id.textViewF);
+            txtV= itemView.findViewById(R.id.textViewF);
         }
-    }
+      }
     }
 

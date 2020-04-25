@@ -12,6 +12,10 @@ public class ParseItems {
         this.title = title;
     }
 
+    public ParseItems(String title) {
+        this.title = title;
+    }
+
     public String getImageurl() {
         return imageurl;
     }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
@@ -31,11 +32,14 @@ private Elements data;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_fixtures);
-
         progressBar=findViewById(R.id.Progress_barF);
+        recyclerView=(RecyclerView)findViewById(R.id.RecylerViewF);
+
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ParseAdaptor(parseItems,this);
         recyclerView.setAdapter(adapter);
+
         Context context = new Context();
         context.execute();
 
@@ -64,28 +68,33 @@ private Elements data;
         @Override
         protected Void doInBackground(Void... voids) {
 
-                String url = "https://athletics.augustana.edu/";
+                final String url = "https://athletics.augustana.edu/";
+
+
+
             try {
-                Document doc = Jsoup.connect(url).get();
-                data = doc.select("div.game slick-slide slick-active");
+                final Document doc = Jsoup.connect(url).get();
+
+                data = doc.select("div.slick-active.slick-slide.game");
+                System.out.println(doc.outerHtml()); //To Check whether we getting any data from Website or Not
                 int size=data.size();
-                for(int i =0;i < size;i++)
+                for(int i = 0;i < size;i++)
                 {
-                    String imageurl = data.select("div.game slick-slide slick-active")
+                    String imageurl = data.select(
+                            "div.athletics.augustana.edu/images/default_cal_logo.png")
                             .select("img")
                             .eq(i)
                             .attr("src");
-                    String title = data.select("sport")
+                    String title = data.select("div.sidearm-section-label-fixed")
                             .select("div")
                             .eq(i)
                             .text();
                     parseItems.add(new ParseItems(imageurl,title));
-
                 }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
 
 
             return null;
