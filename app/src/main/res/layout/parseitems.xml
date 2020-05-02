@@ -10,10 +10,12 @@
         android:layout_height="250dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="8dp"
         android:layout_margin="8dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageViewF"
+    <ImageView
+        android:id="@+id/imageViewFixtures"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -21,14 +23,15 @@
         />
 
     <TextView
-        android:id="@+id/textViewF"
+        android:id="@+id/textTilteTeam1"
         style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
+        android:text="Title"
         android:layout_gravity="bottom"
-        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteX="22dp"
         tools:ignore="MissingConstraints" />
-    </androidx.cardview.widget.CardView>>
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

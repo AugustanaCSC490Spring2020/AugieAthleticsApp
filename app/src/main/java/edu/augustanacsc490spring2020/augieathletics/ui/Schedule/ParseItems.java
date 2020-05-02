@@ -12,6 +12,7 @@ public class ParseItems {
         this.title = title;
     }
 
+
     public ParseItems(String title) {
         this.title = title;
     }
