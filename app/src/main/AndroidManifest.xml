@@ -16,7 +16,7 @@
         </activity>
         <activity
             android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login">
+            android:label="@string/appTitle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
