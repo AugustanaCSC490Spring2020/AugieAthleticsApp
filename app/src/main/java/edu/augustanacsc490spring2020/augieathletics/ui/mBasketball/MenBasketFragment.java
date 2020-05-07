@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 public class MenBasketFragment extends Fragment {
 
     private MenBasketViewModel menBasketViewModel;
+    private Button rosterButton;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,13 +33,20 @@ public class MenBasketFragment extends Fragment {
                 textView.setText(s);
             }
         });
+        rosterButton = root.findViewById(R.id.rosterBtn);
+        goToRoster(root);
+
         return root;
     }
 
-    public void goToRoster(View view) {
-        Intent intent = new Intent(getActivity(), RosterActivity.class);
-        startActivity(intent);
-
+    private void goToRoster(final View view) {
+        rosterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), RosterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

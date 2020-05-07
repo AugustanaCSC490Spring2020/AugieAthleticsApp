@@ -40,4 +40,6 @@
         android:name="edu.augustanacsc490spring2020.augieathletics.ui.teams.TeamFragment"
         android:label="@string/teams"
         tools:layout="@layout/fragment_team" />
+
+
 </navigation>
