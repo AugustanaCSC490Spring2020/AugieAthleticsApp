@@ -18,22 +18,23 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 
 public class ParseAdaptor extends RecyclerView.Adapter<ParseAdaptor.ViewHolder> {
     private ArrayList<ParseItems> parseItems;
-    private Context contextt;
+    private Context contextFixtures;
 
-    public ParseAdaptor(ArrayList<ParseItems> parseItems, Context contextt) {
+    public ParseAdaptor(ArrayList<ParseItems> parseItems, Context contextF) {
         this.parseItems = parseItems;
-        this.contextt = contextt;
+        this.contextFixtures = contextF;
     }
 
     @NonNull
     @Override
-    public ParseAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parseitems,parent,false);
-        return new ViewHolder(view);
+        ViewHolder parseHolder = new ViewHolder(view);
+        return parseHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ParseAdaptor.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ParseItems parseItem= parseItems.get(position);
         holder.txtV.setText(parseItem.getTitle());
         Picasso.get().load(parseItem.getImageurl()).into(holder.imgV);
@@ -52,8 +53,8 @@ public class ParseAdaptor extends RecyclerView.Adapter<ParseAdaptor.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgV= itemView.findViewById(R.id.imageViewF);
-            txtV= itemView.findViewById(R.id.textViewF);
+            imgV= itemView.findViewById(R.id.imageViewFixtures);
+            txtV= itemView.findViewById(R.id.textTilteTeam1);
         }
       }
     }

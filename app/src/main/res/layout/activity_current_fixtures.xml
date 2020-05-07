@@ -7,11 +7,11 @@
     tools:context="edu.augustanacsc490spring2020.augieathletics.ui.Schedule.currentFixtures">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecylerViewF"
+        android:id="@+id/RecylerViewFixtures"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/Progress_barF"
+        android:id="@+id/Progress_barFixtures"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:indeterminate="true"

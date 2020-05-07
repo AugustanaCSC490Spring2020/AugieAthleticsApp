@@ -22,26 +22,27 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 
 
 public class currentFixtures extends AppCompatActivity {
-private RecyclerView recyclerView;
-private ParseAdaptor adapter;
-private ArrayList<ParseItems> parseItems= new ArrayList<>();
-private ProgressBar progressBar;
-private Elements data;
+    private RecyclerView recyclerView;
+    private ParseAdaptor adapterFixtures;
+    private ArrayList<ParseItems> parseItems= new ArrayList<>();
+    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_fixtures);
-        progressBar=findViewById(R.id.Progress_barF);
-        recyclerView=(RecyclerView)findViewById(R.id.RecylerViewF);
+
+        progressBar = findViewById(R.id.Progress_barFixtures);
+        recyclerView = findViewById(R.id.RecylerViewFixtures);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ParseAdaptor(parseItems,this);
-        recyclerView.setAdapter(adapter);
+        adapterFixtures = new ParseAdaptor(parseItems,this);
+        recyclerView.setAdapter(adapterFixtures);
 
-        Context context = new Context();
-        context.execute();
+        Context executeItems = new Context();
+        AsyncTask<Void, Void, Void> execute = executeItems.execute();
 
     }
     private class Context extends AsyncTask<Void,Void,Void>{
@@ -57,7 +58,7 @@ private Elements data;
             super.onPostExecute(aVoid);
             progressBar.setVisibility(View.GONE);
             progressBar.startAnimation(AnimationUtils.loadAnimation(currentFixtures.this,android.R.anim.fade_out));
-            adapter.notifyDataSetChanged();;
+            adapterFixtures.notifyDataSetChanged();;
         }
 
         @Override
@@ -68,28 +69,26 @@ private Elements data;
         @Override
         protected Void doInBackground(Void... voids) {
 
-                final String url = "https://athletics.augustana.edu/";
-
-
+                final String url = "athletics.augustana.edu/";
 
             try {
                 final Document doc = Jsoup.connect(url).get();
 
-                data = doc.select("div.slick-active.slick-slide.game");
+                Elements dataFixtures = doc.select("div.row flex flex-align-center flex-justify-end");
                 System.out.println(doc.outerHtml()); //To Check whether we getting any data from Website or Not
-                int size=data.size();
+                int size=dataFixtures.size();
                 for(int i = 0;i < size;i++)
                 {
-                    String imageurl = data.select(
-                            "div.athletics.augustana.edu/images/default_cal_logo.png")
+                    String imageData = dataFixtures.select(
+                            "/images/default_cal_logo.png")
                             .select("img")
                             .eq(i)
-                            .attr("src");
-                    String title = data.select("div.sidearm-section-label-fixed")
+                            .attr("img");
+                    String title = dataFixtures.select("div.row")
                             .select("div")
                             .eq(i)
                             .text();
-                    parseItems.add(new ParseItems(imageurl,title));
+                    parseItems.add(new ParseItems(imageData,title));
                 }
 
             } catch (IOException e) {
