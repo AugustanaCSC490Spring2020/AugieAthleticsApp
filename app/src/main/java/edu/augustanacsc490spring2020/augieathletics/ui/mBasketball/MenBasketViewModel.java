@@ -13,17 +13,20 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class MenBasketViewModel extends ViewModel {
+import edu.augustanacsc490spring2020.augieathletics.data.roster.Roster;
+import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterFetcher;
+import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterListener;
+
+public class MenBasketViewModel extends ViewModel implements RosterListener {
 
     private MutableLiveData<String> mText;
     private String url = "https://athletics.augustana.edu/sports/mens-basketball/roster";
     private ProgressDialog mProgressDialog;
-    private Elements playerPosition, playerName, playerOther, coaches;
     private String roster;
 
 
     public MenBasketViewModel() {
-        new RosterFetchTask().execute();
+
         mText = new MutableLiveData<>();
         mText.setValue("Loading...");
     }
@@ -32,39 +35,8 @@ public class MenBasketViewModel extends ViewModel {
         return mText;
     }
 
-    private class RosterFetchTask extends AsyncTask<Void, Void, Void> {
-        Elements playerPosition, playerName, playerOther, coaches;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                Document document = Jsoup.connect(url).get();
-                playerName = document.select("div.sidearm-roster-player-name");
-                playerPosition = document.select("div.sidearm-roster-player-position");
-                playerOther = document.select("div.sidearm-roster-player-other.hide-on-large");
-                coaches = document.select("div.sidearm-roster-coach-details.flex-item-1.column");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-            roster = "";
-            for (int i = 0; i < playerName.size(); i++) {
-                roster += playerName.get(i).text() + " " + playerPosition.get(i).text() + " " +
-                        playerOther.get(i).text() + "\n";
-            }
-            for (int i = 0; i < coaches.size(); i++) {
-                roster += coaches.get(i).text() + "\n";
-            }
-            mText.setValue(roster);
-        }
+    @Override
+    public void rosterDownloaded(Roster roster) {
+        mText.setValue(roster.getRosterText());
     }
 }

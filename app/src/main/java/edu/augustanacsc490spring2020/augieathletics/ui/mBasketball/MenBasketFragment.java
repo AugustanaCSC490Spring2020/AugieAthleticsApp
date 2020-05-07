@@ -23,16 +23,7 @@ public class MenBasketFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        menBasketViewModel =
-                ViewModelProviders.of(this).get(MenBasketViewModel.class);
         View root = inflater.inflate(R.layout.fragment_mbasket, container, false);
-        final TextView textView = root.findViewById(R.id.text_mbasket);
-        menBasketViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         rosterButton = root.findViewById(R.id.rosterBtn);
         goToRoster(root);
 
