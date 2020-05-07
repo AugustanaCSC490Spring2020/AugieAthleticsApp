@@ -26,7 +26,6 @@ import androidx.appcompat.widget.Toolbar;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.augustanacsc490spring2020.augieathletics.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         String goodbye = "Successful Logout";
                         Toast.makeText(getApplicationContext(), goodbye, Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(view.getContext(), LoginActivity.class);
+                        Intent intent = new Intent(view.getContext(), IntroActivity.class);
                         startActivity(intent);
                     }
                 });

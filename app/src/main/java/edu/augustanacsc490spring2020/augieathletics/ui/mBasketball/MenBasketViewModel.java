@@ -2,7 +2,6 @@ package edu.augustanacsc490spring2020.augieathletics.ui.mBasketball;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.widget.TextView;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -24,7 +23,7 @@ public class MenBasketViewModel extends ViewModel {
 
 
     public MenBasketViewModel() {
-        new Roster().execute();
+        new RosterFetchTask().execute();
         mText = new MutableLiveData<>();
         mText.setValue("Loading...");
     }
@@ -33,7 +32,7 @@ public class MenBasketViewModel extends ViewModel {
         return mText;
     }
 
-    private class Roster extends AsyncTask<Void, Void, Void> {
+    private class RosterFetchTask extends AsyncTask<Void, Void, Void> {
         Elements playerPosition, playerName, playerOther, coaches;
 
         @Override
