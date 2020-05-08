@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import org.jsoup.Jsoup;
@@ -18,14 +20,17 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import edu.augustanacsc490spring2020.augieathletics.MainActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
 
 
 public class currentFixtures extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private ParseAdaptor adapterFixtures;
-    private ArrayList<ParseItems> parseItems= new ArrayList<>();
+    private RecyclerView recyclerViFixtures;
+    private fixturesAdapter adapterFixtures;
+    private ArrayList<fixturesItems> parseItems= new ArrayList<>();
     private ProgressBar progressBar;
+    Button returnHome;
 
 
     @Override
@@ -34,23 +39,35 @@ public class currentFixtures extends AppCompatActivity {
         setContentView(R.layout.activity_current_fixtures);
 
         progressBar = findViewById(R.id.Progress_barFixtures);
-        recyclerView = findViewById(R.id.RecylerViewFixtures);
+        recyclerViFixtures = findViewById(R.id.RecylerViewFixtures);
+        returnHome = findViewById(R.id.btnReturnHome);
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapterFixtures = new ParseAdaptor(parseItems,this);
-        recyclerView.setAdapter(adapterFixtures);
+        recyclerViFixtures.setHasFixedSize(true);
+        recyclerViFixtures.setLayoutManager(new LinearLayoutManager(this));
+        adapterFixtures = new fixturesAdapter(parseItems,this);
+        recyclerViFixtures.setAdapter(adapterFixtures);
 
         Context executeItems = new Context();
-        AsyncTask<Void, Void, Void> execute = executeItems.execute();
+        executeItems.execute();
+
+
+        returnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(currentFixtures.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
+
     private class Context extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             progressBar.setVisibility(View.VISIBLE);
-            progressBar.startAnimation(AnimationUtils.loadAnimation(currentFixtures.this,android.R.anim.fade_in));
+            progressBar.startAnimation(AnimationUtils.loadAnimation(currentFixtures.this, android.R.anim.fade_in));
         }
 
         @Override
@@ -58,37 +75,40 @@ public class currentFixtures extends AppCompatActivity {
             super.onPostExecute(aVoid);
             progressBar.setVisibility(View.GONE);
             progressBar.startAnimation(AnimationUtils.loadAnimation(currentFixtures.this,android.R.anim.fade_out));
-            adapterFixtures.notifyDataSetChanged();;
+            adapterFixtures.notifyDataSetChanged();
         }
 
-        @Override
-        protected void onCancelled() {
-            super.onCancelled();
-        }
 
         @Override
         protected Void doInBackground(Void... voids) {
 
-                final String url = "athletics.augustana.edu/";
+               String url = "https://athletics.augustana.edu/";
 
             try {
                 final Document doc = Jsoup.connect(url).get();
+                String fixtureSelector = "game slick-slide slick-active";
+                //http://scrapingauthority.com/2016/08/16/web-scraping-in-java-with-jsoup/
+                Elements dataFixtures = doc.select(fixtureSelector);
+               // System.out.println(doc.outerHtml()); //To Check whether we getting any data from Website or Not
 
-                Elements dataFixtures = doc.select("div.row flex flex-align-center flex-justify-end");
-                System.out.println(doc.outerHtml()); //To Check whether we getting any data from Website or Not
                 int size=dataFixtures.size();
+
+                Log.d("doc", "doc: "+doc);   //https://developer.android.com/reference/android/util/Log
+                Log.d("data", "data: "+dataFixtures);
+                Log.d("size", ""+size);
+
                 for(int i = 0;i < size;i++)
                 {
-                    String imageData = dataFixtures.select(
-                            "/images/default_cal_logo.png")
+                    String imageUrl = dataFixtures.select("section.sidearm-section-label-fixed")
                             .select("img")
                             .eq(i)
-                            .attr("img");
-                    String title = dataFixtures.select("div.row")
+                            .attr("src");
+                    String title = dataFixtures.select("div.sport")
                             .select("div")
                             .eq(i)
                             .text();
-                    parseItems.add(new ParseItems(imageData,title));
+                    parseItems.add(new fixturesItems(imageUrl,title));
+                    Log.d("items", "img: " + imageUrl + " . title: " + title);
                 }
 
             } catch (IOException e) {

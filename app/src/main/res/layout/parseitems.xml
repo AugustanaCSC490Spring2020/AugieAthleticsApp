@@ -8,10 +8,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        style="@style/CardView.Light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardCornerRadius="8dp"
         android:layout_margin="8dp">
 
     <ImageView
@@ -19,19 +19,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@color/gray"
-        />
+        android:src="#88888888"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:src="@drawable/gradient"/>
 
     <TextView
-        android:id="@+id/textTilteTeam1"
-        style="@style/TextAppearance.AppCompat.Medium"
+        android:id="@+id/textTitleFixturesTeam1"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:text="Title"
+        style="@style/TextAppearance.AppCompat.Medium"
         android:layout_gravity="bottom"
-        tools:layout_editor_absoluteX="22dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_margin="12dp"
+        android:textColor="#fff"/>
     </androidx.cardview.widget.CardView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

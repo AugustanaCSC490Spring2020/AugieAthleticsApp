@@ -9,17 +9,33 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecylerViewFixtures"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    <androidx.core.widget.ContentLoadingProgressBar
+        android:layout_height="match_parent"
+        android:background="@color/yellow"/>
+
+    <ProgressBar
         android:id="@+id/Progress_barFixtures"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:indeterminate="true"
-        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:indeterminate="true"
+        android:visibility="gone"/>
 
+    <Button
+        android:id="@+id/btnReturnHome"
+        android:layout_width="233dp"
+        android:layout_height="50dp"
+        android:text="@string/menu_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        android:background="@drawable/side_nav_bar"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:textSize="18sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
