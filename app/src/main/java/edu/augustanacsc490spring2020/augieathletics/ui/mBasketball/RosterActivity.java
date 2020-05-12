@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
 
     @Override
     public void rosterDownloaded(Roster roster) {
+        rosterListTextView.setMovementMethod(new ScrollingMovementMethod());
         rosterListTextView.setText(roster.getRosterText());
     }
 }

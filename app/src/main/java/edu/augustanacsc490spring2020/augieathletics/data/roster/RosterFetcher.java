@@ -52,15 +52,17 @@ public class RosterFetcher {
             String rosterText = "";
             for (int i = 0; i < playerName.size(); i++) {
                 rosterText += playerName.get(i).text() + " " + playerPosition.get(i).text() + " " +
-                        playerOther.get(i).text() + "\n";
+                        truncateBadInfo(playerOther.get(i).text()) + "\n";
             }
             for (int i = 0; i < coaches.size(); i++) {
-                rosterText += coaches.get(i).text() + "\n";
+                rosterText += truncateBadInfo(coaches.get(i).text()) + "\n";
             }
             Roster roster = new Roster(rosterText);
             rosterListener.rosterDownloaded(roster);
         }
     }
-
+        String truncateBadInfo(String str) {
+            return str.substring(0, str.indexOf(" Full Bio"));
+        }
 }
 
