@@ -16,6 +16,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:background="@color/colorPrimaryDark"
+        android:onClick="openSignInScreen"
         android:text="@string/action_sign_in"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
