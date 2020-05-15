@@ -24,8 +24,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.util.Arrays;
-import java.util.List;
+import edu.augustanacsc490spring2020.augieathletics.data.user.User;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     private TextView userName;
     private TextView userEmail;
-    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_mbasket, R.id.nav_team)
+                R.id.nav_home, R.id.nav_mbasket, R.id.nav_favorites)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -55,12 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         View header = navigationView.getHeaderView(0);
-        if (user != null) {
-            Log.d("tag1ged", user.getEmail() + " " + user.getDisplayName());
+        if (firebaseUser != null) {
+            Log.d("tag1ged", firebaseUser.getEmail() + " " + firebaseUser.getDisplayName());
             userName = header.findViewById(R.id.userName);
             userEmail = header.findViewById(R.id.userEmail);
-            userEmail.setText(user.getEmail());
-            userName.setText(user.getDisplayName());
+            userEmail.setText(firebaseUser.getEmail());
+            userName.setText(firebaseUser.getDisplayName());
+            user = new User(firebaseUser);
         }
 
     }

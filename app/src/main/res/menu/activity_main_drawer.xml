@@ -11,15 +11,15 @@
         <item
             android:id="@+id/nav_mbasket"
             android:icon="@android:drawable/ic_media_play"
-            android:title="@string/mbasket" />
+            android:title="@string/menu_menSports" />
         <item
-            android:id="@+id/nav_team"
+            android:id="@+id/nav_favorites"
             android:icon="@android:drawable/ic_media_play"
-            android:title="@string/teams" />
+            android:title="@string/menu_favorites" />
         <item
             android:id="@+id/nav_Calendar"
             android:icon="@android:drawable/ic_menu_my_calendar"
-            android:title="@string/Calendar" />
+            android:title="@string/calendar" />
 
     </group>
 </menu>

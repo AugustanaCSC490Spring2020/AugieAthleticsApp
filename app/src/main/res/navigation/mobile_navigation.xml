@@ -15,19 +15,20 @@
     <fragment
         android:id="@+id/nav_mbasket"
         android:name="edu.augustanacsc490spring2020.augieathletics.ui.mBasketball.MenBasketFragment"
-        android:label="@string/mbasket"
+        android:label="@string/menu_menSports"
         tools:layout="@layout/fragment_mbasket" />
 
+
     <fragment
-        android:id="@+id/nav_team"
-        android:name="edu.augustanacsc490spring2020.augieathletics.ui.teams.TeamFragment"
-        android:label="@string/teams"
-        tools:layout="@layout/fragment_team" />
+        android:id="@+id/nav_favorites"
+        android:name="edu.augustanacsc490spring2020.augieathletics.ui.teams.FavoriteTeamFragment"
+        android:label="@string/menu_favorites"
+        tools:layout="@layout/fragment_favorite_team" />
 
     <fragment
         android:id="@+id/nav_Calendar"
-        android:name="edu.augustanacsc490spring2020.augieathletics.ui.Schedule.CalendarFragment"
+        android:name="edu.augustanacsc490spring2020.augieathletics.ui.Calendar.CalendarFragment"
         android:label="Calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/calendar_fragment" />
 
 </navigation>
