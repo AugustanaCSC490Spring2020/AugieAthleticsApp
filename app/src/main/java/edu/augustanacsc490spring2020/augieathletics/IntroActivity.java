@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -23,12 +24,14 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
+    }
+
+    public void openSignInScreen (View v) {
         List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build());
 
         startActivityForResult(AuthUI.getInstance().
                 createSignInIntentBuilder().setAvailableProviders(providers).build(),RC_SIGN_IN);
-
     }
 
     @Override
@@ -45,7 +48,7 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(intent);
                 // ...
             } else {
-                Toast.makeText(getApplicationContext(), "Sign in failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Sign in cancelled", Toast.LENGTH_LONG).show();
             }
         }
     }

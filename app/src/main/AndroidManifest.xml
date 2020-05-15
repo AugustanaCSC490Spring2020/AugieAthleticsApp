@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IntroActivity"
+        <activity android:name=".ui.Schedule.CalendarViewModel"></activity>
+        <activity
+            android:name=".IntroActivity"
             android:label="@string/appTitle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Schedule.currentFixtures"></activity>
+        <activity android:name=".ui.Schedule.currentFixtures" />
         <activity android:name=".ui.mBasketball.RosterActivity" />
         <activity
             android:name=".MainActivity"
