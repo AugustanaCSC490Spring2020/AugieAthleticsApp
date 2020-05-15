@@ -9,7 +9,7 @@
             android:icon="@android:drawable/ic_media_play"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_mbasket"
+            android:id="@+id/nav_msport"
             android:icon="@android:drawable/ic_media_play"
             android:title="@string/menu_menSports" />
         <item
