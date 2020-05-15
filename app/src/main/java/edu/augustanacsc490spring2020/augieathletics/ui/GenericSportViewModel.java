@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.mSports;
+package edu.augustanacsc490spring2020.augieathletics.ui;
 
 import android.app.ProgressDialog;
 
@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.Roster;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterListener;
 
-public class MenSportViewModel extends ViewModel implements RosterListener {
+public class GenericSportViewModel extends ViewModel implements RosterListener {
 
     private MutableLiveData<String> mText;
     private String url = "https://athletics.augustana.edu/sports/mens-basketball/roster";
@@ -17,7 +17,7 @@ public class MenSportViewModel extends ViewModel implements RosterListener {
     private String roster;
 
 
-    public MenSportViewModel() {
+    public GenericSportViewModel() {
 
         mText = new MutableLiveData<>();
         mText.setValue("Loading...");

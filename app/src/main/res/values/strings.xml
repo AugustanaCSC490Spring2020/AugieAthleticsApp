@@ -26,4 +26,19 @@
     <string name="calendar">Calendar</string>
     <string name="favorite_team_list">Favorite Team List</string>
 
+    <string-array name="sportNames">
+        <item>Baseball</item>
+        <item>Basketball</item>
+        <item>Cross Country</item>
+        <item>Football</item>
+        <item>Golf</item>
+        <item>Lacrosse</item>
+        <item>Soccer</item>
+        <item>Swimming and Diving</item>
+        <item>Tennis</item>
+        <item>Track and Field</item>
+        <item>Volleyball</item>
+        <item>Water Polo</item>
+        <item>Wrestling</item>
+    </string-array>
 </resources>

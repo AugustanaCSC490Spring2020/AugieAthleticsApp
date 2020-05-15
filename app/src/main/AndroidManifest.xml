@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.Calendar.currentFixtures" />
-        <activity android:name=".ui.mSports.RosterActivity" />
+        <activity android:name=".ui.sports.RosterActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"

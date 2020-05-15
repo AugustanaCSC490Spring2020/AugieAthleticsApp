@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.mSports;
+package edu.augustanacsc490spring2020.augieathletics.ui.sports;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,12 +14,13 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.Roster;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterFetcher;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterListener;
+import edu.augustanacsc490spring2020.augieathletics.ui.GenericSportViewModel;
 
 public class RosterActivity extends AppCompatActivity implements RosterListener {
 
     private Button returnBtn;
     private TextView rosterListTextView;
-    private MenSportViewModel menSportViewModel;
+    private GenericSportViewModel genericSportViewModel;
 
 
     @Override
