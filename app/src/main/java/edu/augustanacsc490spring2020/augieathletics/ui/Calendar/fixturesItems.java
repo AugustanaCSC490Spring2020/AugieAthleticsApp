@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.Schedule;
+package edu.augustanacsc490spring2020.augieathletics.ui.Calendar;
 
 public class fixturesItems {
     private String imageUrl;

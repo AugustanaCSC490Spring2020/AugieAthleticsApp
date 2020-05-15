@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.Schedule;
+package edu.augustanacsc490spring2020.augieathletics.ui.Calendar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

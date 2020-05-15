@@ -13,21 +13,21 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_mbasket"
-        android:name="edu.augustanacsc490spring2020.augieathletics.ui.mBasketball.MenBasketFragment"
-        android:label="@string/mbasket"
-        tools:layout="@layout/fragment_mbasket" />
+        android:id="@+id/nav_favorites"
+        android:name="edu.augustanacsc490spring2020.augieathletics.ui.favTeams.FavoriteTeamFragment"
+        android:label="@string/menu_favorites"
+        tools:layout="@layout/fragment_favorite_team" />
 
     <fragment
-        android:id="@+id/nav_team"
-        android:name="edu.augustanacsc490spring2020.augieathletics.ui.teams.TeamFragment"
-        android:label="@string/teams"
-        tools:layout="@layout/fragment_team" />
+        android:id="@+id/nav_msport"
+        android:name="edu.augustanacsc490spring2020.augieathletics.ui.mSports.MenSportFragment"
+        android:label="@string/menu_menSports"
+        tools:layout="@layout/fragment_msport" />
 
     <fragment
         android:id="@+id/nav_Calendar"
-        android:name="edu.augustanacsc490spring2020.augieathletics.ui.Schedule.CalendarFragment"
+        android:name="edu.augustanacsc490spring2020.augieathletics.ui.Calendar.CalendarFragment"
         android:label="Calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/calendar_fragment" />
 
 </navigation>

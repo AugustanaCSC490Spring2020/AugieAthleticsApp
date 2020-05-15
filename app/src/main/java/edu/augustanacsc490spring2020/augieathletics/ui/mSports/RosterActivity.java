@@ -1,9 +1,6 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.mBasketball;
+package edu.augustanacsc490spring2020.augieathletics.ui.mSports;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +19,7 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
 
     private Button returnBtn;
     private TextView rosterListTextView;
-    private MenBasketViewModel menBasketViewModel;
+    private MenSportViewModel menSportViewModel;
 
 
     @Override

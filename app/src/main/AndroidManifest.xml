@@ -7,22 +7,22 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/appTitle"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Schedule.CalendarViewModel"></activity>
+        <activity android:name=".ui.Calendar.CalendarViewModel"></activity>
         <activity
             android:name=".IntroActivity"
-            android:label="@string/appTitle">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Schedule.currentFixtures" />
-        <activity android:name=".ui.mBasketball.RosterActivity" />
+        <activity android:name=".ui.Calendar.currentFixtures" />
+        <activity android:name=".ui.mSports.RosterActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"

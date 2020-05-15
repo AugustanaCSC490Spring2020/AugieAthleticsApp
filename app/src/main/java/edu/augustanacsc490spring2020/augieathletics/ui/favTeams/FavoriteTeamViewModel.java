@@ -1,14 +1,14 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.teams;
+package edu.augustanacsc490spring2020.augieathletics.ui.favTeams;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class TeamViewModel extends ViewModel {
+public class FavoriteTeamViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public TeamViewModel() {
+    public FavoriteTeamViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is slideshow fragment");
     }
