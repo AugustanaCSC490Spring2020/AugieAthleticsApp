@@ -6,31 +6,21 @@
     android:layout_height="match_parent"
     tools:context="edu.augustanacsc490spring2020.augieathletics.ui.home.HomeFragment">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="650dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnResults">
-
-    </ScrollView>
-
     <Button
         android:id="@+id/btnResults"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/colorPrimary"
         android:text="@string/results"
+
         android:textColor="@color/white"
+
         android:textSize="18sp"
         android:textStyle="bold|italic"
-
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnUpComingEvents" />
@@ -39,32 +29,34 @@
         android:id="@+id/btnUpComingEvents"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/upcoming_games"
+
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold|italic"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="399dp"
-        android:layout_height="643dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/websiteLinkBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/gainsboro"
+        android:text="Augustana Athletics Webpage"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnResults">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleViFixtures"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:itemCount="10" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/btnResults" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package edu.augustanacsc490spring2020.augieathletics.ui.home;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 import edu.augustanacsc490spring2020.augieathletics.Results.Results;
 
 public class HomeFragment extends Fragment {
-Button Events;
+    Button Events;
     private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,12 +44,17 @@ Button Events;
             }
         });
 
+        Button webpageBtn = root.findViewById(R.id.websiteLinkBtn);
+        webpageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://athletics.augustana.edu/"));
+                startActivity(intent);
+            }
+        });
         return root;
     }
-
-    public void onClick(View view) {
-        Intent intent = new Intent(getActivity(), GameActivity.class);
-        startActivity(intent);
-    }
-
 }
