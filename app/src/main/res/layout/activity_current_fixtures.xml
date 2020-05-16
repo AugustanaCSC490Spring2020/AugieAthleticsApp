@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context="edu.augustanacsc490spring2020.augieathletics.ui.Calendar.currentFixtures">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecylerViewFixtures"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/yellow"/>
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="80dp"
+        android:background="@color/colorPrimaryDark"/>
 
     <ProgressBar
         android:id="@+id/Progress_barFixtures"
@@ -25,17 +28,34 @@
 
     <Button
         android:id="@+id/btnReturnHome"
-        android:layout_width="233dp"
-        android:layout_height="50dp"
-        android:text="@string/menu_home"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/navy"
+        android:text="Return"
+        android:textStyle="bold|italic"
+        android:textSize="18sp"
+        android:textColor="@color/whitesmoke"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
-        android:background="@drawable/side_nav_bar"
-        android:textColor="@color/white"
-        android:textStyle="italic"
-        android:textSize="18sp"/>
+        app:layout_constraintVertical_bias="0.998"/>
+
+    <TextView
+        android:id="@+id/textViewEvents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming Events"
+        android:textColor="@color/navy"
+        android:textSize="30dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@+id/RecylerViewFixtures"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

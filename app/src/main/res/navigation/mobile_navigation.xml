@@ -22,18 +22,32 @@
         android:id="@+id/nav_msport"
         android:name="edu.augustanacsc490spring2020.augieathletics.ui.sports.mSportFragment"
         android:label="@string/menu_menSports"
-        tools:layout="@layout/fragment_msport" />
+        tools:layout="@layout/fragment_msport" >
+        <action
+            android:id="@+id/action_nav_msport_to_nav_generic_sport"
+            app:destination="@id/nav_generic_sport" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_fsport"
         android:name="edu.augustanacsc490spring2020.augieathletics.ui.sports.fSportFragment"
         android:label="Women's Sports"
-        tools:layout="@layout/fragment_fsport" />
+        tools:layout="@layout/fragment_fsport" >
+        <action
+            android:id="@+id/action_nav_fsport_to_nav_generic_sport"
+            app:destination="@id/nav_generic_sport" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_Calendar"
         android:name="edu.augustanacsc490spring2020.augieathletics.ui.Calendar.CalendarFragment"
         android:label="Calendar"
         tools:layout="@layout/calendar_fragment" />
+
+    <fragment
+        android:id="@+id/nav_generic_sport"
+        android:name="edu.augustanacsc490spring2020.augieathletics.ui.sports.GenericSportFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_generic_sport" />
 
 </navigation>
