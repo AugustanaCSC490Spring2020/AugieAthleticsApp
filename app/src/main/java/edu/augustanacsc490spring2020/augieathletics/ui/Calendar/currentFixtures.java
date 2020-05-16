@@ -28,6 +28,7 @@ import java.util.ArrayList;
 
 import edu.augustanacsc490spring2020.augieathletics.MainActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
+import edu.augustanacsc490spring2020.augieathletics.Results.Results;
 
 
 public class currentFixtures extends AppCompatActivity {
@@ -35,7 +36,7 @@ public class currentFixtures extends AppCompatActivity {
     private fixturesAdapter adapterFixtures;
     private ArrayList<fixturesItems> parseItems= new ArrayList<>();
     private ProgressBar progressBar;
-    Button returnHome;
+    Button returnHome,btnResults;
     String dataFixtures="";
 
 
@@ -47,6 +48,7 @@ public class currentFixtures extends AppCompatActivity {
         progressBar = findViewById(R.id.Progress_barFixtures);
         recyclerViFixtures = findViewById(R.id.RecylerViewFixtures);
         returnHome = findViewById(R.id.btnReturnHome);
+        btnResults=findViewById(R.id.btnResults);
 
         recyclerViFixtures.setHasFixedSize(true);
         recyclerViFixtures.setLayoutManager(new LinearLayoutManager(this));
@@ -61,6 +63,15 @@ public class currentFixtures extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(currentFixtures.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btnResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(currentFixtures.this, Results.class);
                 startActivity(intent);
                 finish();
             }

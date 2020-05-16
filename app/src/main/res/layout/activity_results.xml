@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFDF00"
-    tools:context="edu.augustanacsc490spring2020.augieathletics.ui.Calendar.currentFixtures">
+    android:background="@color/gold"
+    tools:context="edu.augustanacsc490spring2020.augieathletics.Results.Results">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecylerViewFixtures"
+        android:id="@+id/RecylerViewResults"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="530dp"
+        android:layout_marginTop="68dp"
         android:background="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242"
-        tools:layout_editor_absoluteX="-4dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <ProgressBar
-        android:id="@+id/Progress_barFixtures"
+        android:id="@+id/Progress_barResults"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,25 +28,7 @@
         android:visibility="gone"/>
 
     <Button
-        android:id="@+id/btnResults"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/Ndarkred"
-        android:text="Results"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold|italic"
-
-        app:layout_constraintBottom_toBottomOf="@+id/btnReturnHome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.917" />
-
-    <Button
-        android:id="@+id/btnReturnHome"
+        android:id="@+id/ReturnHome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/side_nav_bar"
@@ -63,10 +44,10 @@
         app:layout_constraintVertical_bias="0.998"/>
 
     <TextView
-        android:id="@+id/textViewEvents"
+        android:id="@+id/textViewResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upcoming Events"
+        android:text="Results"
         android:textColor="@color/navy"
         android:textSize="30dp"
         android:textStyle="bold|italic"
@@ -76,6 +57,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.008" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
