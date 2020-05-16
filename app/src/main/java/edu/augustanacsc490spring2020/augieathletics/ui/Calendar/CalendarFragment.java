@@ -39,7 +39,7 @@ public class CalendarFragment extends Fragment {
         WebSettings webSettings = calendarWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        textView = root.findViewById(R.id.textView3);
+        textView = root.findViewById(R.id.vsTxt);
         textView.setText("activity created");
         if (calendarWebView == null) {
             textView.setText("why no work");

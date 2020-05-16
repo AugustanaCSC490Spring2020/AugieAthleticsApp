@@ -33,7 +33,7 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 public class Results extends AppCompatActivity {
 
     private RecyclerView recyclerViResults;
-    private resultsAdapter adapterResults;
+    private ResultsAdapter adapterResults;
     private ArrayList<ResultItems> parseresults= new ArrayList<>();
     private ProgressBar progressBar;
     Button returnHome;
@@ -51,7 +51,7 @@ public class Results extends AppCompatActivity {
 
         recyclerViResults.setHasFixedSize(true);
         recyclerViResults.setLayoutManager(new LinearLayoutManager(this));
-        adapterResults = new resultsAdapter(parseresults,this);
+        adapterResults = new ResultsAdapter(parseresults,this);
         recyclerViResults.setAdapter(adapterResults);
 
         Results.Context executeItems = new Results.Context();

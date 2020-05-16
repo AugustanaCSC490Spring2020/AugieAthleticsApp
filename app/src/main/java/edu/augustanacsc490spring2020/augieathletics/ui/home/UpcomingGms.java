@@ -31,10 +31,10 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 import edu.augustanacsc490spring2020.augieathletics.Results.Results;
 
 
-public class currentFixtures extends AppCompatActivity {
+public class UpcomingGms extends AppCompatActivity {
     private RecyclerView recyclerViFixtures;
-    private fixturesAdapter adapterFixtures;
-    private ArrayList<fixturesItems> parseItems= new ArrayList<>();
+    private UpcomingGmAdapter adapterFixtures;
+    private ArrayList<UpcomingGmItems> parseItems= new ArrayList<>();
     private ProgressBar progressBar;
     Button returnHome,btnResults;
     String dataFixtures="";
@@ -52,7 +52,7 @@ public class currentFixtures extends AppCompatActivity {
 
         recyclerViFixtures.setHasFixedSize(true);
         recyclerViFixtures.setLayoutManager(new LinearLayoutManager(this));
-        adapterFixtures = new fixturesAdapter(parseItems,this);
+        adapterFixtures = new UpcomingGmAdapter(parseItems,this);
         recyclerViFixtures.setAdapter(adapterFixtures);
 
         Context executeItems = new Context();
@@ -62,7 +62,7 @@ public class currentFixtures extends AppCompatActivity {
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(currentFixtures.this, MainActivity.class);
+                Intent intent = new Intent(UpcomingGms.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -71,7 +71,7 @@ public class currentFixtures extends AppCompatActivity {
         btnResults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(currentFixtures.this, Results.class);
+                Intent intent = new Intent(UpcomingGms.this, Results.class);
                 startActivity(intent);
                 finish();
             }
@@ -84,14 +84,14 @@ public class currentFixtures extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             progressBar.setVisibility(View.VISIBLE);
-            progressBar.startAnimation(AnimationUtils.loadAnimation(currentFixtures.this, android.R.anim.fade_in));
+            progressBar.startAnimation(AnimationUtils.loadAnimation(UpcomingGms.this, android.R.anim.fade_in));
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             progressBar.setVisibility(View.GONE);
-            progressBar.startAnimation(AnimationUtils.loadAnimation(currentFixtures.this,android.R.anim.fade_out));
+            progressBar.startAnimation(AnimationUtils.loadAnimation(UpcomingGms.this,android.R.anim.fade_out));
             adapterFixtures.notifyDataSetChanged();
         }
 
@@ -127,7 +127,7 @@ public class currentFixtures extends AppCompatActivity {
                     JSONObject secondObject= fixturesObject.getJSONObject("opponent");
                     String teamTitle2 = secondObject.getString("title");
 
-                    parseItems.add(new fixturesItems(teamTitle,teamTitle2,"Date: "+date,"Time: "+teamTime,"Location: "+location));
+                    parseItems.add(new UpcomingGmItems(teamTitle,teamTitle2,"Date: "+date,"Time: "+teamTime,"Location: "+location));
                     Log.d( "items","title: " + teamTitle);
 
                 }

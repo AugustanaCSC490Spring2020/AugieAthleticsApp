@@ -13,25 +13,25 @@ import java.util.ArrayList;
 
 import edu.augustanacsc490spring2020.augieathletics.R;
 
-public class resultsAdapter extends RecyclerView.Adapter<resultsAdapter.ViewHolder> {
+public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ViewHolder> {
 
     private ArrayList<ResultItems> parseResults;
     private Context context;
 
-    public resultsAdapter(ArrayList<ResultItems> parseResults, Context context) {
+    public ResultsAdapter(ArrayList<ResultItems> parseResults, Context context) {
         this.parseResults = parseResults;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public resultsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.resultitems, parent, false);
+    public ResultsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.result_items, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull resultsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ResultsAdapter.ViewHolder holder, int position) {
         ResultItems parseItem = parseResults.get(position);
         holder.textRTeam1.setText(parseItem.getRtitle());
         holder.textRTeam2.setText(parseItem.getRtitle2());

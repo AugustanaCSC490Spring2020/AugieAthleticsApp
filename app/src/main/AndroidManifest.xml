@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.currentFixtures" />
+        <activity android:name=".ui.home.UpcomingGms" />
         <activity android:name=".ui.sports.RosterActivity" />
         <activity
             android:name=".MainActivity"

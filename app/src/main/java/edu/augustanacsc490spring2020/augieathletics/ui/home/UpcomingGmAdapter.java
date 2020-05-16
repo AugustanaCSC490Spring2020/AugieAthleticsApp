@@ -14,26 +14,26 @@ import java.util.ArrayList;
 
 import edu.augustanacsc490spring2020.augieathletics.R;
 
-public class fixturesAdapter extends RecyclerView.Adapter<fixturesAdapter.ViewHolder> {
+public class UpcomingGmAdapter extends RecyclerView.Adapter<UpcomingGmAdapter.ViewHolder> {
 
-    private ArrayList<fixturesItems> parseItems;
+    private ArrayList<UpcomingGmItems> parseItems;
     private Context context;
 
-    public fixturesAdapter(ArrayList<fixturesItems> parseItems, Context context) {
+    public UpcomingGmAdapter(ArrayList<UpcomingGmItems> parseItems, Context context) {
         this.parseItems = parseItems;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public fixturesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parseitems, parent, false);
+    public UpcomingGmAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.upcoming_gm_items, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull fixturesAdapter.ViewHolder holder, int position) {
-        fixturesItems parseItem = parseItems.get(position);
+    public void onBindViewHolder(@NonNull UpcomingGmAdapter.ViewHolder holder, int position) {
+        UpcomingGmItems parseItem = parseItems.get(position);
         holder.texttitleTeam1.setText(parseItem.getTitle());
         holder.texttitleTeam2.setText(parseItem.getTitle2());
         holder.textDate.setText(parseItem.getDate());

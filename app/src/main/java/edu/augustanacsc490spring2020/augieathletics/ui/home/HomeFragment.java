@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import edu.augustanacsc490spring2020.augieathletics.GameActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
 import edu.augustanacsc490spring2020.augieathletics.Results.Results;
 
@@ -30,7 +29,7 @@ public class HomeFragment extends Fragment {
         Events.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), currentFixtures.class);
+                Intent intent = new Intent(v.getContext(), UpcomingGms.class);
                 startActivity(intent);
             }
         });

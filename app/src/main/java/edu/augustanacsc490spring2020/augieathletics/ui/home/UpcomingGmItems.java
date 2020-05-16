@@ -1,13 +1,13 @@
 package edu.augustanacsc490spring2020.augieathletics.ui.home;
 
-public class fixturesItems {
+public class UpcomingGmItems {
     private String title;
     private String title2;
     private String Date;
     private String Time;
     private String location;
 
-    public fixturesItems(String title, String title2, String date, String time, String location) {
+    public UpcomingGmItems(String title, String title2, String date, String time, String location) {
         this.title = title;
         this.title2 = title2;
         Date = date;
@@ -15,7 +15,7 @@ public class fixturesItems {
         this.location = location;
     }
 
-    public fixturesItems(String title, String title2, String date, String time) {
+    public UpcomingGmItems(String title, String title2, String date, String time) {
         this.title = title;
         this.title2 = title2;
         Date = date;
