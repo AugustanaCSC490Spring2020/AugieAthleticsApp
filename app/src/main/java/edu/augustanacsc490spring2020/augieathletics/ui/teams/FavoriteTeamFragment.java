@@ -23,6 +23,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import edu.augustanacsc490spring2020.augieathletics.R;
 import edu.augustanacsc490spring2020.augieathletics.data.user.User;
 
@@ -47,6 +50,15 @@ public class FavoriteTeamFragment extends Fragment {
         editText = root.findViewById(R.id.editText);
         button = root.findViewById(R.id.addToDatabaseTest);
         addBtnListener(root, button);
+        String str = "neither null";
+        if (root == null) {
+            str = "root";
+        }
+        if (this.getActivity() == null) {
+            str += "activity null";
+        }
+        Log.d("bogaloo", str);
+        addToDatabase(root, this.getActivity());
         return root;
     }
 
@@ -60,12 +72,13 @@ public class FavoriteTeamFragment extends Fragment {
     }
 
 
-    public void addToDatabase(View view) {
+    public void addToDatabase(View view, final Activity activity) {
+        final ArrayList<String> list = new ArrayList<>(Arrays.asList("option1", "option2", "option3"));
         user.getDatabaseReference().child(user.getFirebaseUser().getEmail().toString().replace('.',','))
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        //ArrayAdapter aa =new ArrayAdapter(this, android.R.layout.simple_spinner_item, user.getFavoriteSportsList());
+                        ArrayAdapter aa =new ArrayAdapter(activity, android.R.layout.simple_spinner_item, list);
                     }
 
                     @Override
