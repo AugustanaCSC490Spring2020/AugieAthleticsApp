@@ -10,12 +10,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecylerViewFixtures"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="0dp"
         android:background="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242"
-        tools:layout_editor_absoluteX="-4dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnResults"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEvents" />
 
     <ProgressBar
         android:id="@+id/Progress_barFixtures"
@@ -32,50 +32,50 @@
         android:id="@+id/btnResults"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
-        android:text="Results"
+        android:text="@string/results"
+
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold|italic"
 
-        app:layout_constraintBottom_toBottomOf="@+id/btnReturnHome"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/btnReturnHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.917" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnReturnHome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/side_nav_bar"
-        android:text="Home"
-        android:textStyle="bold|italic"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/gainsboro"
+        android:text="@string/home"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp"
-        android:textColor="@color/whitesmoke"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.998"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewEvents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upcoming Games"
-        android:textColor="@color/navy"
+        android:text="@string/upcoming_games"
+        android:textColor="@color/colorAccent"
         android:textSize="28dp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="@+id/RecylerViewFixtures"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
