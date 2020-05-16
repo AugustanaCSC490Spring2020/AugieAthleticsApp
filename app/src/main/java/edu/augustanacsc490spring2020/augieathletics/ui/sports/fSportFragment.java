@@ -3,6 +3,7 @@ package edu.augustanacsc490spring2020.augieathletics.ui.sports;
 import android.os.Bundle;
 
 import androidx.fragment.app.ListFragment;
+import androidx.navigation.Navigation;
 
 import edu.augustanacsc490spring2020.augieathletics.R;
 
@@ -12,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -40,6 +43,14 @@ public class fSportFragment extends ListFragment implements AdapterView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
-        Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
+        String[] fSportsArray = getResources().getStringArray(R.array.fSports);
+        List<String> fSportsModified = new ArrayList<>();
+        for (String str: fSportsArray) {
+            fSportsModified.add("womens-" + str.toLowerCase().replace(' ', '-'));
+        }
+        Bundle sportName = new Bundle();
+        sportName.putString("sportName", fSportsModified.get(position));
+        Navigation.findNavController(view).navigate(R.id.action_nav_fsport_to_nav_generic_sport,
+                sportName);
     }
 }

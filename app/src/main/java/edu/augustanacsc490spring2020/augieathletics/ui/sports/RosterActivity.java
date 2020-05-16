@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,7 +15,6 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.Roster;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterFetcher;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterListener;
-import edu.augustanacsc490spring2020.augieathletics.ui.GenericSportViewModel;
 
 public class RosterActivity extends AppCompatActivity implements RosterListener {
 
@@ -28,7 +28,8 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roster);
 
-        RosterFetcher fetcher = new RosterFetcher(this, "mens-basketball");
+        RosterFetcher fetcher = new RosterFetcher(this, this.getIntent().getExtras()
+                .getString("sportName"));
         fetcher.startFetchingRoster();
 
 

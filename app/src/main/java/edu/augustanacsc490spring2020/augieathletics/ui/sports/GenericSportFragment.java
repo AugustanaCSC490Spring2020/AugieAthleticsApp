@@ -1,7 +1,8 @@
-package edu.augustanacsc490spring2020.augieathletics.ui;
+package edu.augustanacsc490spring2020.augieathletics.ui.sports;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import edu.augustanacsc490spring2020.augieathletics.R;
-import edu.augustanacsc490spring2020.augieathletics.ui.sports.RosterActivity;
 
 public class GenericSportFragment extends Fragment {
 
@@ -20,7 +20,7 @@ public class GenericSportFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_msport, container, false);
+        View root = inflater.inflate(R.layout.fragment_generic_sport, container, false);
         rosterButton = root.findViewById(R.id.rosterBtn);
         goToRoster(root);
 
@@ -32,6 +32,7 @@ public class GenericSportFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(view.getContext(), RosterActivity.class);
+                intent.putExtras(getArguments());
                 startActivity(intent);
             }
         });

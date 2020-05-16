@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui;
+package edu.augustanacsc490spring2020.augieathletics.ui.sports;
 
 import android.app.ProgressDialog;
 
