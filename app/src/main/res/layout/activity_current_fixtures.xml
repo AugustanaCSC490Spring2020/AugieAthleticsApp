@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFDF00"
+    android:background="@color/colorPrimaryDark"
     tools:context="edu.augustanacsc490spring2020.augieathletics.ui.Calendar.currentFixtures">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -66,9 +66,9 @@
         android:id="@+id/textViewEvents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upcoming Events"
+        android:text="Upcoming Games"
         android:textColor="@color/navy"
-        android:textSize="30dp"
+        android:textSize="28dp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="@+id/RecylerViewFixtures"
         app:layout_constraintEnd_toEndOf="parent"
