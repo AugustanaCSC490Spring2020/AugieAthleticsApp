@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import edu.augustanacsc490spring2020.augieathletics.R;
-import edu.augustanacsc490spring2020.augieathletics.ui.Calendar.fixturesItems;
 
 public class resultsAdapter extends RecyclerView.Adapter<resultsAdapter.ViewHolder> {
 

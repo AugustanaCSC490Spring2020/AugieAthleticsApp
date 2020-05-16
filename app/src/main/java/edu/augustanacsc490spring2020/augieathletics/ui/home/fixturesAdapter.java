@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.Calendar;
+package edu.augustanacsc490spring2020.augieathletics.ui.home;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 

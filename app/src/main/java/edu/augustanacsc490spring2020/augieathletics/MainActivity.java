@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
         View header = navigationView.getHeaderView(0);
         if (firebaseUser != null) {
             Log.d("tag1ged", firebaseUser.getEmail() + " " + firebaseUser.getDisplayName());

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFDF00"
-    tools:context="edu.augustanacsc490spring2020.augieathletics.ui.Calendar.currentFixtures">
+    tools:context="edu.augustanacsc490spring2020.augieathletics.ui.home.currentFixtures">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecylerViewFixtures"
@@ -32,7 +32,7 @@
         android:id="@+id/btnResults"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/Ndarkred"
+        android:background="@color/colorPrimary"
         android:text="Results"
         android:textColor="@color/white"
         android:textSize="18sp"

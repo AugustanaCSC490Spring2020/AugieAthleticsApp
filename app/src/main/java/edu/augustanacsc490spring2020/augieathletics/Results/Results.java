@@ -28,9 +28,7 @@ import java.util.ArrayList;
 
 
 import edu.augustanacsc490spring2020.augieathletics.R;
-import edu.augustanacsc490spring2020.augieathletics.ui.Calendar.currentFixtures;
-import edu.augustanacsc490spring2020.augieathletics.ui.Calendar.fixturesAdapter;
-import edu.augustanacsc490spring2020.augieathletics.ui.Calendar.fixturesItems;
+import edu.augustanacsc490spring2020.augieathletics.ui.home.currentFixtures;
 
 public class Results extends AppCompatActivity {
 
