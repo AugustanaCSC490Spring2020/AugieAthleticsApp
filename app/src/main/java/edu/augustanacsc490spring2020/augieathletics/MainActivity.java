@@ -1,6 +1,9 @@
 package edu.augustanacsc490spring2020.augieathletics;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,6 +31,7 @@ import edu.augustanacsc490spring2020.augieathletics.data.user.User;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String CHANNEL_ID = "AugieAthletics";
     private AppBarConfiguration mAppBarConfiguration;
     private static final int RC_SIGN_IN = 123;
     private TextView userName;
@@ -65,13 +69,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    public void createSignInIntent() {
-//        List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.EmailBuilder().build(),
-//                new AuthUI.IdpConfig.GoogleBuilder().build());
-//
-//        startActivityForResult(AuthUI.getInstance().
-//                createSignInIntentBuilder().setAvailableProviders(providers).build(),RC_SIGN_IN);
-//    }
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
 
     public void signOut(final View view) {
         // [START auth_fui_signout]
