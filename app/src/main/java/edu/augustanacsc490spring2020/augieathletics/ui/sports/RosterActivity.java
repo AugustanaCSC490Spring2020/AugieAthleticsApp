@@ -1,12 +1,10 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.mBasketball;
+package edu.augustanacsc490spring2020.augieathletics.ui.sports;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,12 +14,13 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.Roster;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterFetcher;
 import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterListener;
+import edu.augustanacsc490spring2020.augieathletics.ui.GenericSportViewModel;
 
 public class RosterActivity extends AppCompatActivity implements RosterListener {
 
     private Button returnBtn;
     private TextView rosterListTextView;
-    private MenBasketViewModel menBasketViewModel;
+    private GenericSportViewModel genericSportViewModel;
 
 
     @Override
@@ -46,6 +45,7 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
 
     @Override
     public void rosterDownloaded(Roster roster) {
+        rosterListTextView.setMovementMethod(new ScrollingMovementMethod());
         rosterListTextView.setText(roster.getRosterText());
     }
 }

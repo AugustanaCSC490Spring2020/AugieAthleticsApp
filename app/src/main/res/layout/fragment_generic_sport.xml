@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.augustanacsc490spring2020.augieathletics.ui.mBasketball.MenBasketFragment">
+    tools:context="edu.augustanacsc490spring2020.augieathletics.ui.GenericSportFragment">
 
     <Button
         android:id="@+id/rosterBtn"

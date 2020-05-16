@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.teams;
+package edu.augustanacsc490spring2020.augieathletics.ui.favTeams;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
