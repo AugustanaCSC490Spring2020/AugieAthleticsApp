@@ -27,14 +27,14 @@ import java.net.URL;
 import java.util.ArrayList;
 
 
+import edu.augustanacsc490spring2020.augieathletics.MainActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
-import edu.augustanacsc490spring2020.augieathletics.ui.home.currentFixtures;
 
 public class Results extends AppCompatActivity {
 
     private RecyclerView recyclerViResults;
     private resultsAdapter adapterResults;
-    private ArrayList<resultitems> parseresults= new ArrayList<>();
+    private ArrayList<ResultItems> parseresults= new ArrayList<>();
     private ProgressBar progressBar;
     Button returnHome;
     String dataResults="";
@@ -61,7 +61,7 @@ public class Results extends AppCompatActivity {
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Results.this, currentFixtures.class);
+                Intent intent = new Intent(Results.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -120,7 +120,7 @@ public class Results extends AppCompatActivity {
                     String scoreT1= scoreObject.getString("team_score");
                     String scoreT2= scoreObject.getString("opponent_score");
 
-                    parseresults.add(new resultitems(teamTitle,teamTitle2,scoreT1,scoreT2,"Date: "+date,"Time: "+RTime,"Location: "+Rlocation));
+                    parseresults.add(new ResultItems(teamTitle,teamTitle2,scoreT1,scoreT2,"Date: "+date,"Time: "+RTime,"Location: "+Rlocation));
                     Log.d( "items","title: " + teamTitle);
 
                 }

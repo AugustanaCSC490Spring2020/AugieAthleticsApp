@@ -114,17 +114,17 @@ public class currentFixtures extends AppCompatActivity {
                 JSONArray fixturesArray= new JSONArray(dataFixtures);
                 for (int i=0; i <=fixturesArray.length();i++)
                 {
-                    JSONObject fixutresObject = (JSONObject) fixturesArray.get(i);
+                    JSONObject fixturesObject = (JSONObject) fixturesArray.get(i);
 
-                    String teamDate = fixutresObject.getString("date");
+                    String teamDate = fixturesObject.getString("date");
                     String date= teamDate.substring(0,10);
-                    String teamTime = fixutresObject.getString("time");
-                    String location = fixutresObject.getString("location");
+                    String teamTime = fixturesObject.getString("time");
+                    String location = fixturesObject.getString("location");
 
-                    JSONObject firstObject= fixutresObject.getJSONObject("sport");
+                    JSONObject firstObject= fixturesObject.getJSONObject("sport");
                     String teamTitle = firstObject.getString("title");
 
-                    JSONObject secondObject= fixutresObject.getJSONObject("opponent");
+                    JSONObject secondObject= fixturesObject.getJSONObject("opponent");
                     String teamTitle2 = secondObject.getString("title");
 
                     parseItems.add(new fixturesItems(teamTitle,teamTitle2,"Date: "+date,"Time: "+teamTime,"Location: "+location));

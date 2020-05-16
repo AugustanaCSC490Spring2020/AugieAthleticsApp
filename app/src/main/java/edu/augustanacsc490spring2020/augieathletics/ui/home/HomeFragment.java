@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import edu.augustanacsc490spring2020.augieathletics.GameActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
+import edu.augustanacsc490spring2020.augieathletics.Results.Results;
 
 public class HomeFragment extends Fragment {
 Button Events;
@@ -32,6 +33,16 @@ Button Events;
                 startActivity(intent);
             }
         });
+
+        Button btnResults = root.findViewById(R.id.btnResults);
+        btnResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Results.class);
+                startActivity(intent);
+            }
+        });
+
         return root;
     }
 

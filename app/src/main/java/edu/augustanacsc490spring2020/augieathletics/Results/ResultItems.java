@@ -1,6 +1,6 @@
 package edu.augustanacsc490spring2020.augieathletics.Results;
 
-public class resultitems {
+public class ResultItems {
 
     private String Rtitle;
     private String Rtitle2;
@@ -10,12 +10,7 @@ public class resultitems {
     private String RTime;
     private String Rlocation;
 
-
-    public resultitems() {
-    }
-
-
-    public resultitems(String rtitle, String rtitle2, String rscore1, String rscore2, String RDate, String RTime, String rlocation) {
+    public ResultItems(String rtitle, String rtitle2, String rscore1, String rscore2, String RDate, String RTime, String rlocation) {
         this.Rtitle = rtitle;
         this.Rtitle2 = rtitle2;
         this.Rscore1 = rscore1;

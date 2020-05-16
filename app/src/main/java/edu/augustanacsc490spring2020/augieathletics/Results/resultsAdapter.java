@@ -15,10 +15,10 @@ import edu.augustanacsc490spring2020.augieathletics.R;
 
 public class resultsAdapter extends RecyclerView.Adapter<resultsAdapter.ViewHolder> {
 
-    private ArrayList<resultitems> parseResults;
+    private ArrayList<ResultItems> parseResults;
     private Context context;
 
-    public resultsAdapter(ArrayList<resultitems> parseResults, Context context) {
+    public resultsAdapter(ArrayList<ResultItems> parseResults, Context context) {
         this.parseResults = parseResults;
         this.context = context;
     }
@@ -32,7 +32,7 @@ public class resultsAdapter extends RecyclerView.Adapter<resultsAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull resultsAdapter.ViewHolder holder, int position) {
-        resultitems parseItem = parseResults.get(position);
+        ResultItems parseItem = parseResults.get(position);
         holder.textRTeam1.setText(parseItem.getRtitle());
         holder.textRTeam2.setText(parseItem.getRtitle2());
         holder.textRscore1.setText(parseItem.getRscore1());

@@ -27,6 +27,9 @@
     <string name="favorite_team_list">Favorite Team List</string>
     <string name="channel_name">AugieAthletics</string>
     <string name="channel_description">Upcoming game</string>
+    <string name="results">Results</string>
+    <string name="upcoming_games">Upcoming Games</string>
+    <string name="home">Home</string>
 
     <string-array name="mSports">
         <item>Baseball</item>

@@ -51,7 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/side_nav_bar"
-        android:text="Return"
+        android:text="Home"
         android:textStyle="bold|italic"
         android:textSize="18sp"
         android:textColor="@color/whitesmoke"
