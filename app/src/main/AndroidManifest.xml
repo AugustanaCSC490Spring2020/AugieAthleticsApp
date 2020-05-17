@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Calendar.CalendarViewModel"></activity>
+        <activity android:name=".Results.Results"></activity>
+        <activity android:name=".ui.Calendar.CalendarViewModel" />
         <activity
             android:name=".IntroActivity"
             android:label="@string/app_name">
@@ -21,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Calendar.currentFixtures" />
+        <activity android:name=".UpcomingGms.UpcomingGms" />
         <activity android:name=".ui.sports.RosterActivity" />
         <activity
             android:name=".MainActivity"

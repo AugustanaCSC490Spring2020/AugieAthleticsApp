@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.Calendar;
+package edu.augustanacsc490spring2020.augieathletics.UpcomingGms;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,30 +27,32 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import edu.augustanacsc490spring2020.augieathletics.MainActivity;
+import edu.augustanacsc490spring2020.augieathletics.NotificationCreator;
 import edu.augustanacsc490spring2020.augieathletics.R;
 
 
-public class currentFixtures extends AppCompatActivity {
+public class UpcomingGms extends AppCompatActivity {
     private RecyclerView recyclerViFixtures;
-    private fixturesAdapter adapterFixtures;
-    private ArrayList<fixturesItems> parseItems= new ArrayList<>();
+    private UpcomingGmAdapter adapterFixtures;
+    private ArrayList<UpcomingGmItems> parseItems= new ArrayList<>();
     private ProgressBar progressBar;
-    Button returnHome;
+    Button returnHome,btnResults;
     String dataFixtures="";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current_fixtures);
+        setContentView(R.layout.activity_upcoming_gms);
 
         progressBar = findViewById(R.id.Progress_barFixtures);
         recyclerViFixtures = findViewById(R.id.RecylerViewFixtures);
         returnHome = findViewById(R.id.btnReturnHome);
+        btnResults=findViewById(R.id.btnResults);
 
         recyclerViFixtures.setHasFixedSize(true);
         recyclerViFixtures.setLayoutManager(new LinearLayoutManager(this));
-        adapterFixtures = new fixturesAdapter(parseItems,this);
+        adapterFixtures = new UpcomingGmAdapter(parseItems,this);
         recyclerViFixtures.setAdapter(adapterFixtures);
 
         Context executeItems = new Context();
@@ -60,11 +62,20 @@ public class currentFixtures extends AppCompatActivity {
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(currentFixtures.this, MainActivity.class);
+                Intent intent = new Intent(UpcomingGms.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
+
+//        btnResults.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(UpcomingGms.this, Results.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
     }
 
@@ -73,14 +84,14 @@ public class currentFixtures extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             progressBar.setVisibility(View.VISIBLE);
-            progressBar.startAnimation(AnimationUtils.loadAnimation(currentFixtures.this, android.R.anim.fade_in));
+            progressBar.startAnimation(AnimationUtils.loadAnimation(UpcomingGms.this, android.R.anim.fade_in));
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             progressBar.setVisibility(View.GONE);
-            progressBar.startAnimation(AnimationUtils.loadAnimation(currentFixtures.this,android.R.anim.fade_out));
+            progressBar.startAnimation(AnimationUtils.loadAnimation(UpcomingGms.this,android.R.anim.fade_out));
             adapterFixtures.notifyDataSetChanged();
         }
 
@@ -103,21 +114,23 @@ public class currentFixtures extends AppCompatActivity {
                 JSONArray fixturesArray= new JSONArray(dataFixtures);
                 for (int i=0; i <=fixturesArray.length();i++)
                 {
-                    JSONObject fixutresObject = (JSONObject) fixturesArray.get(i);
+                    JSONObject fixturesObject = (JSONObject) fixturesArray.get(i);
 
-                    String teamDate = fixutresObject.getString("date");
-                    String date= teamDate.substring(0,10);
-                    String teamTime = fixutresObject.getString("time");
-                    String location = fixutresObject.getString("location");
+                    String gameDate = fixturesObject.getString("date");
+                    String date= gameDate.substring(0,10);
+                    String gameTime = fixturesObject.getString("time");
+                    String location = fixturesObject.getString("location");
 
-                    JSONObject firstObject= fixutresObject.getJSONObject("sport");
-                    String teamTitle = firstObject.getString("title");
+                    JSONObject augieSportObject= fixturesObject.getJSONObject("sport");
+                    String augieTeamTitle = augieSportObject.getString("title");
 
-                    JSONObject secondObject= fixutresObject.getJSONObject("opponent");
-                    String teamTitle2 = secondObject.getString("title");
+                    JSONObject opponentObject= fixturesObject.getJSONObject("opponent");
+                    String opponentTeamTitle = opponentObject.getString("title");
 
-                    parseItems.add(new fixturesItems(teamTitle,teamTitle2,"Date: "+date,"Time: "+teamTime,"Location: "+location));
-                    Log.d( "items","title: " + teamTitle);
+                    createNotif(gameDate, gameTime, augieTeamTitle, opponentTeamTitle);
+
+                    parseItems.add(new UpcomingGmItems(augieTeamTitle,opponentTeamTitle,"Date: "+date,"Time: "+gameTime,"Location: "+location));
+                    Log.d( "items","title: " + augieTeamTitle);
 
                 }
                 System.out.println("SizeOfArray"+fixturesArray.length());
@@ -135,4 +148,7 @@ public class currentFixtures extends AppCompatActivity {
     }
     //https://developer.android.com/reference/android/util/Log
 
+    public void createNotif(String gameDate, String gameTime, String augieSport, String opponent) {
+        NotificationCreator.createNotif(this, "Upcoming Augie " + augieSport + " Game!", "Augustana is playing "+opponent+ " at "+gameTime+"! Go Vikings!", gameTime, gameDate);
+    }
 }

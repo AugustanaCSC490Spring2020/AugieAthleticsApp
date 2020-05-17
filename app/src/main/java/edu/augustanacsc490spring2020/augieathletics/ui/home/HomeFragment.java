@@ -1,27 +1,23 @@
 package edu.augustanacsc490spring2020.augieathletics.ui.home;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.EventLog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import edu.augustanacsc490spring2020.augieathletics.GameActivity;
-import edu.augustanacsc490spring2020.augieathletics.MainActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
-import edu.augustanacsc490spring2020.augieathletics.ui.Calendar.currentFixtures;
+import edu.augustanacsc490spring2020.augieathletics.Results.Results;
+import edu.augustanacsc490spring2020.augieathletics.UpcomingGms.UpcomingGms;
 
 public class HomeFragment extends Fragment {
-Button Events;
+    Button Events;
     private HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -34,16 +30,31 @@ Button Events;
         Events.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), currentFixtures.class);
+                Intent intent = new Intent(v.getContext(), UpcomingGms.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnResults = root.findViewById(R.id.btnResults);
+        btnResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Results.class);
+                startActivity(intent);
+            }
+        });
+
+        Button webpageBtn = root.findViewById(R.id.websiteLinkBtn);
+        webpageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://athletics.augustana.edu/"));
                 startActivity(intent);
             }
         });
         return root;
     }
-
-    public void onClick(View view) {
-        Intent intent = new Intent(getActivity(), GameActivity.class);
-        startActivity(intent);
-    }
-
 }

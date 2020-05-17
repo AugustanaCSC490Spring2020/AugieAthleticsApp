@@ -20,11 +20,10 @@ public class CalendarFragment extends Fragment {
     private CalendarViewModel mViewModel;
     private WebView calendarWebView;
     private View root;
-    private TextView textView;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.calendar_fragment, container, false);
+        root = inflater.inflate(R.layout.fragment_calendar, container, false);
         calendarWebView = root.findViewById(R.id.calendarWebView);
         calendarWebView.loadUrl("https://athletics.augustana.edu/calendar");
         return root;
@@ -38,12 +37,6 @@ public class CalendarFragment extends Fragment {
         calendarWebView.loadUrl("https://athletics.augustana.edu/calendar");
         WebSettings webSettings = calendarWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
-        textView = root.findViewById(R.id.textView3);
-        textView.setText("activity created");
-        if (calendarWebView == null) {
-            textView.setText("why no work");
-        }
     }
 
 }
