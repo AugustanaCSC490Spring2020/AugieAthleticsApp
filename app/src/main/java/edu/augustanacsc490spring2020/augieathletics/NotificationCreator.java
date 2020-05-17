@@ -23,6 +23,8 @@ import static edu.augustanacsc490spring2020.augieathletics.MainActivity.CHANNEL_
 // Class created to handle creating notifications for upcoming games
 public class NotificationCreator extends BroadcastReceiver {
 
+    private static final long TWO_HOURS_IN_MILLIS = 2*60*60*1000;
+
     //Majority of code pulled from https://developer.android.com/training/notify-user/build-notification
     public static void createNotif(Context source, String notifTitle, String notifContent, String gameTime, String gameDate) throws ParseException {
         // Adds functionality when notification is Clicked
@@ -33,8 +35,9 @@ public class NotificationCreator extends BroadcastReceiver {
         String gameDateTime = gameDate + " " + gameTime + ":00";
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
         Date date = sdf.parse(gameDateTime);
-        long millis = date.getTime();
-        long currentTime = System.currentTimeMillis();
+        long gameTimeInMillis = date.getTime();
+        long twoHourNotif = gameTimeInMillis - TWO_HOURS_IN_MILLIS;
+
 
         // Creates the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(source, CHANNEL_ID)
@@ -46,7 +49,7 @@ public class NotificationCreator extends BroadcastReceiver {
                 // Set the intent that will fire when the user taps the notification
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
-                .setWhen(millis);
+                .setWhen(twoHourNotif);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(source);
     }
