@@ -54,10 +54,12 @@ public class GenericSportFragment extends Fragment {
         Bundle bundle = this.getActivity().getIntent().getExtras();
         if (bundle != null) {
             sportFormatRoster = bundle.getString("sportName");
-            if (sportFormatRoster.substring(0, 3).equals("men")) {
-                sportFormatGame = "Men's " + sportFormatRoster.substring(4);
+            if (sportFormatGame.equals("wlax")){
+                sportFormatGame = "Women's Lacrosse";
+            } else if (sportFormatRoster.substring(0, 3).equals("men")) {
+                sportFormatGame = "Men's " + sportFormatRoster.substring(5,6).toUpperCase() + sportFormatRoster.substring(6);
             } else if (sportFormatRoster.substring(0, 5).equals("women")) {
-                sportFormatGame = "Women's " + sportFormatRoster.substring(6);
+                sportFormatGame = "Women's " + sportFormatRoster.substring(7,8).toUpperCase() + sportFormatRoster.substring(8);
             } else {
                 sportFormatGame = sportFormatRoster.substring(0, 1).toUpperCase() + sportFormatRoster.substring(1);
             }

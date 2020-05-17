@@ -46,11 +46,14 @@ public class fSportFragment extends ListFragment implements AdapterView.OnItemCl
     public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
         String[] fSportsArray = getResources().getStringArray(R.array.fSports);
         List<String> fSportsModified = new ArrayList<>();
-        List<String> multiGenderSports = Arrays.asList("basketball", "cross country","golf","lacrosse",
+        List<String> multiGenderSports = Arrays.asList("basketball", "bowling","cross country","golf",
                 "soccer","swimming and diving", "tennis", "track and field", "volleyball");
         for (String str: fSportsArray) {
-            if (multiGenderSports.contains(str)) {
-                fSportsModified.add("womens-" + str.toLowerCase().replace(' ', '-'));
+            String lcStr = str.toLowerCase();
+            if (multiGenderSports.contains(lcStr)) {
+                fSportsModified.add("womens-" + lcStr.replace(' ', '-'));
+            } else if (lcStr.equals("lacrosse")) {
+                fSportsModified.add("wlax");
             } else {
                 fSportsModified.add(str.toLowerCase().replace(' ', '-'));
             }

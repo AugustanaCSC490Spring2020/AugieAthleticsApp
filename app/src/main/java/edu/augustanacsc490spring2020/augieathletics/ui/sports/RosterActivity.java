@@ -19,8 +19,10 @@ import edu.augustanacsc490spring2020.augieathletics.data.roster.RosterListener;
 public class RosterActivity extends AppCompatActivity implements RosterListener {
 
     private Button returnBtn;
+    private TextView rosterTitle;
     private TextView rosterListTextView;
     private GenericSportViewModel genericSportViewModel;
+    private String sportTeam;
 
 
     @Override
@@ -28,8 +30,12 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roster);
 
-        RosterFetcher fetcher = new RosterFetcher(this, this.getIntent().getExtras()
-                .getString("sportName"));
+        sportTeam = this.getIntent().getExtras().getString("sportName");
+
+        rosterTitle = findViewById(R.id.rosterTitle);
+        setRosterTitle();
+
+        RosterFetcher fetcher = new RosterFetcher(this, sportTeam);
         fetcher.startFetchingRoster();
 
 
@@ -48,6 +54,20 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
     public void rosterDownloaded(Roster roster) {
         rosterListTextView.setMovementMethod(new ScrollingMovementMethod());
         rosterListTextView.setText(roster.getRosterText());
+    }
+
+    public void setRosterTitle() {
+        String sportFormatGame;
+        if (sportTeam.equals("wlax")){
+            sportFormatGame = "Women's Lacrosse";
+        } else if (sportTeam.substring(0, 3).equals("men")) {
+            sportFormatGame = "Men's " + sportTeam.substring(5,6).toUpperCase() + sportTeam.substring(6).replace("-"," ");
+        } else if (sportTeam.substring(0, 5).equals("women")) {
+            sportFormatGame = "Women's " + sportTeam.substring(7,8).toUpperCase() + sportTeam.substring(8).replace("-"," ");
+        } else {
+            sportFormatGame = sportTeam.substring(0, 1).toUpperCase() + sportTeam.substring(1).replace("-"," ");
+        }
+        rosterTitle.setText(sportFormatGame + " Roster");
     }
 
 }
