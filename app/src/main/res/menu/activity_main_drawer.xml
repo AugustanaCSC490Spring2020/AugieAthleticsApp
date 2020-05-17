@@ -11,11 +11,11 @@
         <item
             android:id="@+id/nav_msport"
             android:icon="@android:drawable/ic_media_play"
-            android:title="Men's Sports" />
+            android:title="@string/menu_menSports" />
         <item
             android:id="@+id/nav_fsport"
             android:icon="@android:drawable/ic_media_play"
-            android:title="Women's Sports" />
+            android:title="@string/menu_womenSports" />
         <item
             android:id="@+id/nav_favorites"
             android:icon="@android:drawable/ic_media_play"

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -42,6 +43,7 @@ public class GenericSportFragment extends Fragment {
     private ArrayList<GameItems> parseResults = new ArrayList<>();
     private ProgressBar progressBar;
     String dataResults="";
+    private TextView text_mBasket;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -59,7 +61,6 @@ public class GenericSportFragment extends Fragment {
 
         GenericSportFragment.Context executeItems = new GenericSportFragment.Context();
         executeItems.execute();
-
         return root;
     }
 

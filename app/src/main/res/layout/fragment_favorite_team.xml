@@ -1,66 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/favoriteListTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/favorite_team_list"
+        app:layout_constraintBottom_toTopOf="@+id/favoriteListSpinner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.807" />
 
     <Spinner
         android:id="@+id/favoriteListSpinner"
-        android:layout_width="0dp"
+        android:layout_width="409dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favoriteListTextView" />
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/activity_roster"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.385"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addToDatabaseTest" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.104" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.449"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favoriteListSpinner" />
-
-    <Button
-        android:id="@+id/addToDatabaseTest"
+    <fragment
+        android:id="@+id/fragment3"
+        android:name="edu.augustanacsc490spring2020.augieathletics.ui.sports.GenericSportFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/gainsboro"
-        android:text="add to database"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/favoriteListSpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

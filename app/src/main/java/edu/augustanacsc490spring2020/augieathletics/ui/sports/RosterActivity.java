@@ -40,7 +40,7 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
     }
 
     public void returnToMain(View view) {
-        Intent intent = new Intent(view.getContext(), MainActivity.class);
+        Intent intent = new Intent(view.getContext(), GenericSportFragment.class);
         startActivity(intent);
     }
 
