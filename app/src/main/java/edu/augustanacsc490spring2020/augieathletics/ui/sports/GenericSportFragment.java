@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,13 +18,13 @@ public class GenericSportFragment extends Fragment {
 
     private GenericSportViewModel genericSportViewModel;
     private Button rosterButton;
+    private TextView text_mBasket;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_generic_sport, container, false);
         rosterButton = root.findViewById(R.id.rosterBtn);
         goToRoster(root);
-
         return root;
     }
 

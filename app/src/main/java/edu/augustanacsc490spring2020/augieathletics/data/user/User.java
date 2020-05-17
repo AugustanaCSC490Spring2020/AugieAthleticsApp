@@ -2,7 +2,6 @@ package edu.augustanacsc490spring2020.augieathletics.data.user;
 
 import android.util.Log;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,26 +16,26 @@ public class User {
     private FirebaseUser firebaseUser;
     private ArrayList<String> favoriteSportsList;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    private DatabaseReference userdbRef;
+    private String child = "Favorite Sports List";
 
     public User(FirebaseUser firebaseUser) {
         this.firebaseUser = firebaseUser;
         favoriteSportsList = new ArrayList<>();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference(firebaseUser.getEmail().toString().replace('.',','));
+        userdbRef = firebaseDatabase.getReference(firebaseUser.getEmail().toString().replace('.',','));
+        setUpDatabaseReference();
     }
 
     public void addFavoriteSport(String sport) {
         favoriteSportsList.add(sport);
-        databaseReference.setValue(sport);
+        userdbRef.child(child).setValue(favoriteSportsList);
     }
     public void setUpDatabaseReference() {
 
-        databaseReference.child(firebaseUser.getEmail().toString().replace('.',','))
-                .addValueEventListener(new ValueEventListener() {
+        userdbRef.child(child).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-
                         for (DataSnapshot child : dataSnapshot.getChildren()) {
                             favoriteSportsList.add(child.getValue().toString());
                         }
@@ -61,7 +60,7 @@ public class User {
         return firebaseDatabase;
     }
 
-    public DatabaseReference getDatabaseReference() {
-        return databaseReference;
+    public DatabaseReference getUserdbRef() {
+        return userdbRef;
     }
 }
