@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -44,9 +45,18 @@ public class mSportFragment extends ListFragment implements AdapterView.OnItemCl
     public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
         String[] mSportsArray = getResources().getStringArray(R.array.mSports);
         List<String> mSportsModified = new ArrayList<>();
+        List<String> multiGenderSports = Arrays.asList("basketball", "cross country","golf","lacrosse",
+                "soccer","swimming and diving", "tennis", "track and field", "volleyball");
         for (String str: mSportsArray) {
-            mSportsModified.add("mens-" + str.toLowerCase().replace(' ', '-'));
+            if (multiGenderSports.contains(str.toLowerCase())) {
+                mSportsModified.add("mens-" + str.toLowerCase().replace(' ', '-'));
+            } else {
+                mSportsModified.add(str.toLowerCase().replace(' ', '-'));
+            }
         }
+//        for (String str: mSportsArray) {
+//            mSportsModified.add("mens-" + str.toLowerCase().replace(' ', '-'));
+//        }
         Bundle sportName = new Bundle();
         sportName.putString("sportName", mSportsModified.get(position));
         Navigation.findNavController(view).navigate(R.id.action_nav_msport_to_nav_generic_sport,

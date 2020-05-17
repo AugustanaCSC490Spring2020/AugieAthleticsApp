@@ -40,7 +40,7 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
     }
 
     public void returnToMain(View view) {
-        Intent intent = new Intent(view.getContext(), GenericSportFragment.class);
+        Intent intent = new Intent(view.getContext(), MainActivity.class);
         startActivity(intent);
     }
 
@@ -49,4 +49,5 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
         rosterListTextView.setMovementMethod(new ScrollingMovementMethod());
         rosterListTextView.setText(roster.getRosterText());
     }
+
 }

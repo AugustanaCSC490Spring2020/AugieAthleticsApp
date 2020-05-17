@@ -15,13 +15,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 /**
  * A fragment representing a list of Items.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the @link OnListFragmentInteractionListener}
  * interface.
  */
 public class fSportFragment extends ListFragment implements AdapterView.OnItemClickListener {
@@ -45,8 +46,14 @@ public class fSportFragment extends ListFragment implements AdapterView.OnItemCl
     public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
         String[] fSportsArray = getResources().getStringArray(R.array.fSports);
         List<String> fSportsModified = new ArrayList<>();
+        List<String> multiGenderSports = Arrays.asList("basketball", "cross country","golf","lacrosse",
+                "soccer","swimming and diving", "tennis", "track and field", "volleyball");
         for (String str: fSportsArray) {
-            fSportsModified.add("womens-" + str.toLowerCase().replace(' ', '-'));
+            if (multiGenderSports.contains(str)) {
+                fSportsModified.add("womens-" + str.toLowerCase().replace(' ', '-'));
+            } else {
+                fSportsModified.add(str.toLowerCase().replace(' ', '-'));
+            }
         }
         Bundle sportName = new Bundle();
         sportName.putString("sportName", fSportsModified.get(position));

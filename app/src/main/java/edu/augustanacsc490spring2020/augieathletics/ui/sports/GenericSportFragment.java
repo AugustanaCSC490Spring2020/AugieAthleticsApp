@@ -37,7 +37,8 @@ public class GenericSportFragment extends Fragment {
 
     private GenericSportViewModel genericSportViewModel;
     private Button rosterButton;
-    private String sport;
+    private String sportFormatRoster;
+    private String sportFormatGame;
     private RecyclerView recyclerViResults;
     private GameAdapter adapterResults;
     private ArrayList<GameItems> parseResults = new ArrayList<>();
@@ -50,6 +51,18 @@ public class GenericSportFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_generic_sport, container, false);
         rosterButton = root.findViewById(R.id.rosterBtn);
         goToRoster(root);
+        Bundle bundle = this.getActivity().getIntent().getExtras();
+        if (bundle != null) {
+            sportFormatRoster = bundle.getString("sportName");
+            if (sportFormatRoster.substring(0, 3).equals("men")) {
+                sportFormatGame = "Men's " + sportFormatRoster.substring(4);
+            } else if (sportFormatRoster.substring(0, 5).equals("women")) {
+                sportFormatGame = "Women's " + sportFormatRoster.substring(6);
+            } else {
+                sportFormatGame = sportFormatRoster.substring(0, 1).toUpperCase() + sportFormatRoster.substring(1);
+            }
+        }
+
 
         progressBar = root.findViewById(R.id.Progress_barResults);
         recyclerViResults = root.findViewById(R.id.RecylerViewResults);
@@ -62,6 +75,12 @@ public class GenericSportFragment extends Fragment {
         GenericSportFragment.Context executeItems = new GenericSportFragment.Context();
         executeItems.execute();
         return root;
+    }
+
+    // Converts the roster into a format that will recognize sport in game feed.
+    private String rosterFormatConverter(String teamName) {
+
+        return null;
     }
 
     private void goToRoster(final View view) {
@@ -127,7 +146,7 @@ public class GenericSportFragment extends Fragment {
                     String augieScore= scoreObject.getString("team_score");
                     String opponentScore= scoreObject.getString("opponent_score");
 
-                    if (augieSport.equals(sport)) {
+                    if (augieSport.equals(sportFormatGame)) {
                         parseResults.add(new GameItems(augieSport, opponent, augieScore, opponentScore, "Date: " + date, "Time: " + gameTime, "Location: " + gameLocation));
                         Log.d("items", "title: " + augieSport);
                     }
