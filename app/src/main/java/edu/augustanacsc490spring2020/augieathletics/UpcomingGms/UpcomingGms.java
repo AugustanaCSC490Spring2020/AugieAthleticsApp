@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,9 +31,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import edu.augustanacsc490spring2020.augieathletics.IntroActivity;
 import edu.augustanacsc490spring2020.augieathletics.MainActivity;
 import edu.augustanacsc490spring2020.augieathletics.NotificationCreator;
 import edu.augustanacsc490spring2020.augieathletics.R;
+
+import static edu.augustanacsc490spring2020.augieathletics.MainActivity.CHANNEL_ID;
 
 
 public class UpcomingGms extends AppCompatActivity {
@@ -44,6 +52,7 @@ public class UpcomingGms extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upcoming_gms);
+        createNotificationChannel();
 
         progressBar = findViewById(R.id.Progress_barFixtures);
         recyclerViFixtures = findViewById(R.id.RecylerViewFixtures);
@@ -79,6 +88,36 @@ public class UpcomingGms extends AppCompatActivity {
 
     }
 
+    private void createNotificationChannel() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "AugieAthleticsChannel";
+            String description = "Channel for Augie Athletics";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    public void createNotif() {
+        Intent intent = new Intent(this, NotificationCreator.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0, intent,0);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        long timeAtButtonClick = System.currentTimeMillis();
+        long tenSecondsInMillis = 1000 * 10;
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeAtButtonClick + tenSecondsInMillis,
+                pendingIntent);
+
+    }
+
+
     private class Context extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
@@ -94,7 +133,6 @@ public class UpcomingGms extends AppCompatActivity {
             progressBar.startAnimation(AnimationUtils.loadAnimation(UpcomingGms.this,android.R.anim.fade_out));
             adapterFixtures.notifyDataSetChanged();
         }
-
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -127,11 +165,9 @@ public class UpcomingGms extends AppCompatActivity {
                     JSONObject opponentObject= fixturesObject.getJSONObject("opponent");
                     String opponentTeamTitle = opponentObject.getString("title");
 
-                    createNotif(gameDate, gameTime, augieTeamTitle, opponentTeamTitle);
-
                     parseItems.add(new UpcomingGmItems(augieTeamTitle,opponentTeamTitle,"Date: "+date,"Time: "+gameTime,"Location: "+location));
+                    createNotif();
                     Log.d( "items","title: " + augieTeamTitle);
-
                 }
                 System.out.println("SizeOfArray"+fixturesArray.length());
 
@@ -145,10 +181,12 @@ public class UpcomingGms extends AppCompatActivity {
 
             return null;
         }
+
+
     }
     //https://developer.android.com/reference/android/util/Log
 
-    public void createNotif(String gameDate, String gameTime, String augieSport, String opponent) {
-        NotificationCreator.createNotif(this, "Upcoming Augie " + augieSport + " Game!", "Augustana is playing "+opponent+ " at "+gameTime+"! Go Vikings!", gameTime, gameDate);
-    }
+//    public void createNotif(String gameDate, String gameTime, String augieSport, String opponent) {
+//        NotificationCreator.createNotif(this, "Upcoming Augie " + augieSport + " Game!", "Augustana is playing "+opponent+ " at "+gameTime+"! Go Vikings!", gameTime, gameDate);
+//    }
 }
