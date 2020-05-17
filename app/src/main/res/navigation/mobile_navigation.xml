@@ -42,7 +42,7 @@
         android:id="@+id/nav_Calendar"
         android:name="edu.augustanacsc490spring2020.augieathletics.ui.Calendar.CalendarFragment"
         android:label="Calendar"
-        tools:layout="@layout/calendar_fragment" />
+        tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/nav_generic_sport"

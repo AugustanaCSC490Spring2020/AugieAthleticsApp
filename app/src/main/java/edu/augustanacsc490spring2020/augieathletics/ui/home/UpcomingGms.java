@@ -28,7 +28,6 @@ import java.util.ArrayList;
 
 import edu.augustanacsc490spring2020.augieathletics.MainActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
-import edu.augustanacsc490spring2020.augieathletics.Results.Results;
 
 
 public class UpcomingGms extends AppCompatActivity {
@@ -43,7 +42,7 @@ public class UpcomingGms extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current_fixtures);
+        setContentView(R.layout.activity_upcoming_gms);
 
         progressBar = findViewById(R.id.Progress_barFixtures);
         recyclerViFixtures = findViewById(R.id.RecylerViewFixtures);

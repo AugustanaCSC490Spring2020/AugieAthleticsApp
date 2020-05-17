@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createNotif() {
-        NotificationCreator.createNotif("Hello There", "General Kenobi", this);
+        NotificationCreator.createNotif(this, "Hello There", "General Kenobi");
     }
 
     public void signOut(final View view) {

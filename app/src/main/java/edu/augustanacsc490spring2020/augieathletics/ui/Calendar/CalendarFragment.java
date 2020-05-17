@@ -24,7 +24,7 @@ public class CalendarFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.calendar_fragment, container, false);
+        root = inflater.inflate(R.layout.fragment_calendar, container, false);
         calendarWebView = root.findViewById(R.id.calendarWebView);
         calendarWebView.loadUrl("https://athletics.augustana.edu/calendar");
         return root;

@@ -32,6 +32,7 @@
     <string name="home">Home</string>
     <string name="Credits_Text">Application Designed for Augustana College Athletics using Information from the Augustana Athletics Webpage.\n\nDevelopers:\nBryson Adcock, Kathryn Clark, Jenna Morgan, and Faisal Nawaz</string>
     <string name="augustana_athletics_image_content_desc">Augustana Athletics Image</string>
+    <string name="roster">Roster</string>
 
     <string-array name="mSports">
         <item>Baseball</item>
