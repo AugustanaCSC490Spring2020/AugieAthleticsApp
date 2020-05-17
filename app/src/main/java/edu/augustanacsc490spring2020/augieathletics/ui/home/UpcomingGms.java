@@ -68,14 +68,14 @@ public class UpcomingGms extends AppCompatActivity {
             }
         });
 
-        btnResults.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UpcomingGms.this, Results.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        btnResults.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(UpcomingGms.this, Results.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
     }
 

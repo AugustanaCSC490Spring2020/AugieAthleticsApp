@@ -31,7 +31,7 @@ import edu.augustanacsc490spring2020.augieathletics.data.user.User;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CHANNEL_ID = "AugieAthletics";
+    public static final String CHANNEL_ID = "AugieAthletics";
     private AppBarConfiguration mAppBarConfiguration;
     private static final int RC_SIGN_IN = 123;
     private TextView userName;
@@ -86,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void createNotif() {
+        NotificationCreator.createNotif("Hello There", "General Kenobi", this);
+    }
+
     public void signOut(final View view) {
         // [START auth_fui_signout]
         AuthUI.getInstance()
@@ -114,5 +118,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 
 }

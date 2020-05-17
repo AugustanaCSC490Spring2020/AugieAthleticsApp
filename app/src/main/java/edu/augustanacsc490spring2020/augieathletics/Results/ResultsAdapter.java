@@ -40,8 +40,6 @@ public class ResultsAdapter extends RecyclerView.Adapter<ResultsAdapter.ViewHold
         holder.textRDate.setText(parseItem.getRDate());
         holder.textRTime.setText(parseItem.getRTime());
         holder.textRlocation.setText(parseItem.getRlocation());
-
-        //Picasso.get().load(parseItem.getImageurl()).into(holder.imageView);
     }
 
     @Override
