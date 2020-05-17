@@ -20,7 +20,6 @@ public class CalendarFragment extends Fragment {
     private CalendarViewModel mViewModel;
     private WebView calendarWebView;
     private View root;
-    private TextView textView;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -38,12 +37,6 @@ public class CalendarFragment extends Fragment {
         calendarWebView.loadUrl("https://athletics.augustana.edu/calendar");
         WebSettings webSettings = calendarWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
-        textView = root.findViewById(R.id.vsTxt);
-        textView.setText("activity created");
-        if (calendarWebView == null) {
-            textView.setText("why no work");
-        }
     }
 
 }
