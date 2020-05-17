@@ -117,7 +117,7 @@ public class UpcomingGms extends AppCompatActivity {
                     JSONObject fixturesObject = (JSONObject) fixturesArray.get(i);
 
                     String gameDate = fixturesObject.getString("date");
-                    String date= gameDate.substring(0,10);
+                    String date= gameDate.substring(5,10)+"-"+gameDate.substring(0,4);
                     String gameTime = fixturesObject.getString("time");
                     String location = fixturesObject.getString("location");
 

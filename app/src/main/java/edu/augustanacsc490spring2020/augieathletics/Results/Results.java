@@ -106,22 +106,22 @@ public class Results extends AppCompatActivity {
                 {
                     JSONObject resultsObject = (JSONObject) fixturesArray.get(i);
 
-                    String RDate = resultsObject.getString("date");
-                    String date= RDate.substring(0,10);
-                    String RTime = resultsObject.getString("time");
-                    String Rlocation = resultsObject.getString("location");
+                    String gameDate = resultsObject.getString("date");
+                    String date= gameDate.substring(5,10)+"-"+gameDate.substring(0,4);
+                    String gameTime = resultsObject.getString("time");
+                    String gameLocation = resultsObject.getString("location");
 
-                    JSONObject firstObject= resultsObject.getJSONObject("sport");
-                    String teamTitle = firstObject.getString("title");
+                    JSONObject augieTeamObject= resultsObject.getJSONObject("sport");
+                    String augieSport = augieTeamObject.getString("title");
 
-                    JSONObject secondObject= resultsObject.getJSONObject("opponent");
-                    String teamTitle2 = secondObject.getString("title");
+                    JSONObject opponentObject = resultsObject.getJSONObject("opponent");
+                    String opponent = opponentObject.getString("title");
                     JSONObject scoreObject= resultsObject.getJSONObject("result");
-                    String scoreT1= scoreObject.getString("team_score");
-                    String scoreT2= scoreObject.getString("opponent_score");
+                    String augieScore= scoreObject.getString("team_score");
+                    String opponentScore= scoreObject.getString("opponent_score");
 
-                    parseresults.add(new ResultItems(teamTitle,teamTitle2,scoreT1,scoreT2,"Date: "+date,"Time: "+RTime,"Location: "+Rlocation));
-                    Log.d( "items","title: " + teamTitle);
+                    parseresults.add(new ResultItems(augieSport,opponent,augieScore,opponentScore,"Date: "+date,"Time: "+gameTime,"Location: "+gameLocation));
+                    Log.d( "items","title: " + augieSport);
 
                 }
                 System.out.println("SizeOfArray"+fixturesArray.length());
