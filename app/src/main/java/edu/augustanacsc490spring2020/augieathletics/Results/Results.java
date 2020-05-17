@@ -102,8 +102,7 @@ public class Results extends AppCompatActivity {
                 }
                 System.out.println(dataResults);
                 JSONArray fixturesArray= new JSONArray(dataResults);
-                for (int i=0; i <=fixturesArray.length();i++)
-                {
+                for (int i=0; i <=fixturesArray.length();i++) {
                     JSONObject resultsObject = (JSONObject) fixturesArray.get(i);
 
                     String gameDate = resultsObject.getString("date");
@@ -122,7 +121,6 @@ public class Results extends AppCompatActivity {
 
                     parseresults.add(new ResultItems(augieSport,opponent,augieScore,opponentScore,"Date: "+date,"Time: "+gameTime,"Location: "+gameLocation));
                     Log.d( "items","title: " + augieSport);
-
                 }
                 System.out.println("SizeOfArray"+fixturesArray.length());
 

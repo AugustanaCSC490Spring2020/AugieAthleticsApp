@@ -29,6 +29,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import edu.augustanacsc490spring2020.augieathletics.IntroActivity;
@@ -103,7 +104,10 @@ public class UpcomingGms extends AppCompatActivity {
         }
     }
 
-    public void createNotif() {
+    public void createNotif(String augieSport, String opponent, String gameTime, String gameDate) throws ParseException {
+        String title = "Upcoming Augie " + augieSport + " Game!";
+        String content = "Augie is playing " + opponent + " Today at " + gameTime + "! Go Vikings!";
+        NotificationCreator.createNotif(this, title, content, gameTime, gameDate);
         Intent intent = new Intent(this, NotificationCreator.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0, intent,0);
 
@@ -165,8 +169,9 @@ public class UpcomingGms extends AppCompatActivity {
                     JSONObject opponentObject= fixturesObject.getJSONObject("opponent");
                     String opponentTeamTitle = opponentObject.getString("title");
 
+                    createNotif(augieTeamTitle,opponentTeamTitle,gameTime,gameDate);
+                    gameTime = adjustAMPM(gameTime);
                     parseItems.add(new UpcomingGmItems(augieTeamTitle,opponentTeamTitle,"Date: "+date,"Time: "+gameTime,"Location: "+location));
-                    createNotif();
                     Log.d( "items","title: " + augieTeamTitle);
                 }
                 System.out.println("SizeOfArray"+fixturesArray.length());
@@ -177,16 +182,22 @@ public class UpcomingGms extends AppCompatActivity {
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
 
             return null;
         }
 
+        private String adjustAMPM(String str) {
+            if (str.contains("p.m.")) {
+                str = str.substring(0, str.length() - 5) + "pm";
+            } else if (str.contains("a.m.")) {
+                str = str.substring(0, str.length() - 5) + "am";
+            }
+            return str;
+        }
 
     }
     //https://developer.android.com/reference/android/util/Log
-
-//    public void createNotif(String gameDate, String gameTime, String augieSport, String opponent) {
-//        NotificationCreator.createNotif(this, "Upcoming Augie " + augieSport + " Game!", "Augustana is playing "+opponent+ " at "+gameTime+"! Go Vikings!", gameTime, gameDate);
-//    }
 }

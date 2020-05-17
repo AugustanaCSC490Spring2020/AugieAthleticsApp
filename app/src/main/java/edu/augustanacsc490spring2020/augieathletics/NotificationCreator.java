@@ -32,8 +32,9 @@ public class NotificationCreator extends BroadcastReceiver {
 
         // Calculates send time in Millis
         gameTime = adjustAMPM(gameTime);
-        String gameDateTime = gameDate + " " + gameTime + ":00";
-        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+        gameDate = gameDate.substring(0,10);
+        String gameDateTime = gameDate + " " + gameTime;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date date = sdf.parse(gameDateTime);
         long gameTimeInMillis = date.getTime();
         long twoHourNotif = gameTimeInMillis - TWO_HOURS_IN_MILLIS;
@@ -63,7 +64,7 @@ public class NotificationCreator extends BroadcastReceiver {
         } else if (gameTime.contains("p.m.")) {
             gameTime = ""+Integer.parseInt(gameTime.substring(0,1)) + 12 +":00";
         } else { //gameTime.contains("p.m.")
-            gameTime = gameTime.substring(0,gameTime.length()-4);
+            gameTime = gameTime.substring(0,gameTime.length()-5);
         }
             return gameTime;
     }
