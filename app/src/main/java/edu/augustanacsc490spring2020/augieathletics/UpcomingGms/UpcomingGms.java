@@ -27,6 +27,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import edu.augustanacsc490spring2020.augieathletics.MainActivity;
+import edu.augustanacsc490spring2020.augieathletics.NotificationCreator;
 import edu.augustanacsc490spring2020.augieathletics.R;
 
 
@@ -115,19 +116,21 @@ public class UpcomingGms extends AppCompatActivity {
                 {
                     JSONObject fixturesObject = (JSONObject) fixturesArray.get(i);
 
-                    String teamDate = fixturesObject.getString("date");
-                    String date= teamDate.substring(0,10);
-                    String teamTime = fixturesObject.getString("time");
+                    String gameDate = fixturesObject.getString("date");
+                    String date= gameDate.substring(0,10);
+                    String gameTime = fixturesObject.getString("time");
                     String location = fixturesObject.getString("location");
 
-                    JSONObject firstObject= fixturesObject.getJSONObject("sport");
-                    String teamTitle = firstObject.getString("title");
+                    JSONObject augieSportObject= fixturesObject.getJSONObject("sport");
+                    String augieTeamTitle = augieSportObject.getString("title");
 
-                    JSONObject secondObject= fixturesObject.getJSONObject("opponent");
-                    String teamTitle2 = secondObject.getString("title");
+                    JSONObject opponentObject= fixturesObject.getJSONObject("opponent");
+                    String opponentTeamTitle = opponentObject.getString("title");
 
-                    parseItems.add(new UpcomingGmItems(teamTitle,teamTitle2,"Date: "+date,"Time: "+teamTime,"Location: "+location));
-                    Log.d( "items","title: " + teamTitle);
+                    createNotif(gameDate, gameTime, augieTeamTitle, opponentTeamTitle);
+
+                    parseItems.add(new UpcomingGmItems(augieTeamTitle,opponentTeamTitle,"Date: "+date,"Time: "+gameTime,"Location: "+location));
+                    Log.d( "items","title: " + augieTeamTitle);
 
                 }
                 System.out.println("SizeOfArray"+fixturesArray.length());
@@ -145,4 +148,7 @@ public class UpcomingGms extends AppCompatActivity {
     }
     //https://developer.android.com/reference/android/util/Log
 
+    public void createNotif(String gameDate, String gameTime, String augieSport, String opponent) {
+        NotificationCreator.createNotif(this, "Upcoming Augie " + augieSport + " Game!", "Augustana is playing "+opponent+ " at "+gameTime+"! Go Vikings!", gameTime, gameDate);
+    }
 }

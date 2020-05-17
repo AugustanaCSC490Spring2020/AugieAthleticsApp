@@ -14,7 +14,7 @@ import static edu.augustanacsc490spring2020.augieathletics.MainActivity.CHANNEL_
 public class NotificationCreator {
 
     //Majority of code pulled from https://developer.android.com/training/notify-user/build-notification
-    public static void createNotif(Context source, String notifTitle, String notifContent) {
+    public static void createNotif(Context source, String notifTitle, String notifContent, String gameTime, String gameDate) {
         // Adds functionality when notification is Clicked
         PendingIntent pendingIntent = sendUserToOnClick(source, UpcomingGms.class);
 
@@ -27,7 +27,8 @@ public class NotificationCreator {
 
                 // Set the intent that will fire when the user taps the notification
                 .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                ;
     }
 
     private static PendingIntent sendUserToOnClick(Context source, Class target) {
