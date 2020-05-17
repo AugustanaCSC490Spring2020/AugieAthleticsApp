@@ -6,7 +6,7 @@ import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
 
-import edu.augustanacsc490spring2020.augieathletics.ui.home.UpcomingGms;
+import edu.augustanacsc490spring2020.augieathletics.UpcomingGms.UpcomingGms;
 
 import static edu.augustanacsc490spring2020.augieathletics.MainActivity.CHANNEL_ID;
 

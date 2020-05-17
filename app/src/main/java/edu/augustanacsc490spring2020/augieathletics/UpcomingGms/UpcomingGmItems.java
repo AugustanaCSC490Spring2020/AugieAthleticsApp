@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.home;
+package edu.augustanacsc490spring2020.augieathletics.UpcomingGms;
 
 public class UpcomingGmItems {
     private String title;

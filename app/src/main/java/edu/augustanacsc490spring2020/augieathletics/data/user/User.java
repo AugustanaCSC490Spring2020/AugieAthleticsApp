@@ -30,8 +30,8 @@ public class User {
         favoriteSportsList.add(sport);
         databaseReference.setValue(sport);
     }
-    public void setUpDatabaseReference() {
 
+    public void setUpDatabaseReference() {
         databaseReference.child(firebaseUser.getEmail().toString().replace('.',','))
                 .addValueEventListener(new ValueEventListener() {
                     @Override

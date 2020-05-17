@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import edu.augustanacsc490spring2020.augieathletics.R;
 import edu.augustanacsc490spring2020.augieathletics.Results.Results;
+import edu.augustanacsc490spring2020.augieathletics.UpcomingGms.UpcomingGms;
 
 public class HomeFragment extends Fragment {
     Button Events;

@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.home;
+package edu.augustanacsc490spring2020.augieathletics.UpcomingGms;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;

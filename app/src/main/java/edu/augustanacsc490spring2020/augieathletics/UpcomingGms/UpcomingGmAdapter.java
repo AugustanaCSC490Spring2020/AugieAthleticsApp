@@ -1,4 +1,4 @@
-package edu.augustanacsc490spring2020.augieathletics.ui.home;
+package edu.augustanacsc490spring2020.augieathletics.UpcomingGms;
 
 import android.content.Context;
 import android.view.LayoutInflater;
