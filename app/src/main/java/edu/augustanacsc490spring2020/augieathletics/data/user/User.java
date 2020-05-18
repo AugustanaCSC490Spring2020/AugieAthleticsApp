@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -72,7 +73,9 @@ public class User {
 
     public void removeFavoriteSport(String sportName) {
         favoriteSportsSet.remove(sportName);
-        userdbRef.child(child).setValue(getFavoriteSportsAsList().remove(sportName));
+        ArrayList<String> newList = getFavoriteSportsAsList();
+        newList.remove(sportName);
+        userdbRef.child(child).setValue(newList);
     }
 
     public String toString() {
