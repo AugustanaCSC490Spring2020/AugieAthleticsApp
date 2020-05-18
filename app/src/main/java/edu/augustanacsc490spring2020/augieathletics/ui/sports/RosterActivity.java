@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,7 +20,6 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
     private Button returnBtn;
     private TextView rosterTitle;
     private TextView rosterListTextView;
-    private GenericSportViewModel genericSportViewModel;
     private String sportTeam;
 
 
@@ -45,6 +43,10 @@ public class RosterActivity extends AppCompatActivity implements RosterListener 
 
     }
 
+    /**
+     * Returns the view to the main view when the returnBtn is clicked
+     * @param view
+     */
     public void returnToMain(View view) {
         Intent intent = new Intent(view.getContext(), MainActivity.class);
         startActivity(intent);

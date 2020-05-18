@@ -1,7 +1,6 @@
 package edu.augustanacsc490spring2020.augieathletics.ui.sports;
 
 import android.content.Intent;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,17 +11,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,17 +31,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import edu.augustanacsc490spring2020.augieathletics.MainActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
-import edu.augustanacsc490spring2020.augieathletics.data.user.User;
-import edu.augustanacsc490spring2020.augieathletics.ui.favTeams.FavoriteTeamFragment;
 
-import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 import static edu.augustanacsc490spring2020.augieathletics.MainActivity.user;
 
 public class GenericSportFragment extends Fragment {
 
-    private GenericSportViewModel genericSportViewModel;
     private Button rosterButton;
     private String sportFormatRoster;
     private String sportFormatGame;
@@ -81,6 +70,8 @@ public class GenericSportFragment extends Fragment {
         }
         addToFavoritesBox = root.findViewById(R.id.addToFavoritesCheckBox);
 
+        // If the user has the current sport in their favorites list, then check the box.
+        // Otherwise, leave it unchecked.
         if (user.getFavoriteSportsAsList().contains(getArguments().getString("sportName"))) {
             addToFavoritesBox.setChecked(true);
         } else {

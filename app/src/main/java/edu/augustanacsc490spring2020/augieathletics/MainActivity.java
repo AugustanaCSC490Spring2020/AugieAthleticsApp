@@ -59,15 +59,15 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         View header = navigationView.getHeaderView(0);
+
+        // Sets up the Navigation header to display the user's name and email
+        // and creates the User to be used for the favorites list.
         if (firebaseUser != null) {
-            Log.d("tag1ged", firebaseUser.getEmail() + " " + firebaseUser.getDisplayName());
             userName = header.findViewById(R.id.userName);
             userEmail = header.findViewById(R.id.userEmail);
             userEmail.setText(firebaseUser.getEmail());
             userName.setText(firebaseUser.getDisplayName());
             user = new User(firebaseUser);
-            Log.d("boomtown", this.toString());
-
         }
 
     }
@@ -88,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Signs the user out of the app.
+     * @param view
+     */
     public void signOut(final View view) {
         // [START auth_fui_signout]
         AuthUI.getInstance()
@@ -116,9 +120,4 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-    public User getUser() {
-        return user;
-    }
-
 }

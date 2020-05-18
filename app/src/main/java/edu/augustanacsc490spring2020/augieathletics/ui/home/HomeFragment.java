@@ -17,34 +17,22 @@ import edu.augustanacsc490spring2020.augieathletics.Results.Results;
 import edu.augustanacsc490spring2020.augieathletics.UpcomingGms.UpcomingGms;
 
 public class HomeFragment extends Fragment {
-    Button Events;
-    private HomeViewModel homeViewModel;
+
+    private Button eventsBtn;
+    private Button resultsBtn;
+    private Button webpageBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        Events=root.findViewById(R.id.btnUpComingEvents);
 
-        Events.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), UpcomingGms.class);
-                startActivity(intent);
-            }
-        });
+        eventsBtn =root.findViewById(R.id.btnUpComingEvents);
+        resultsBtn = root.findViewById(R.id.btnResults);
 
-        Button btnResults = root.findViewById(R.id.btnResults);
-        btnResults.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Results.class);
-                startActivity(intent);
-            }
-        });
+        addOnClickListeners(UpcomingGms.class, eventsBtn);
+        addOnClickListeners(Results.class, resultsBtn);
 
-        Button webpageBtn = root.findViewById(R.id.websiteLinkBtn);
+        webpageBtn = root.findViewById(R.id.websiteLinkBtn);
         webpageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,5 +44,20 @@ public class HomeFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    /**
+     * Adds on click listeners to buttons
+     * @param activityClass - the activity that the button is supposed to send the view to
+     * @param btn - the button being clicked
+     */
+    public void addOnClickListeners(final Class activityClass, Button btn) {
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), activityClass);
+                startActivity(intent);
+            }
+        });
     }
 }
