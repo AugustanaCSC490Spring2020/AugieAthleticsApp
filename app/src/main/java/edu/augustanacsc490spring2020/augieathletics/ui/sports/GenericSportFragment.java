@@ -10,13 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,7 +37,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import edu.augustanacsc490spring2020.augieathletics.MainActivity;
 import edu.augustanacsc490spring2020.augieathletics.R;
+import edu.augustanacsc490spring2020.augieathletics.data.user.User;
+import edu.augustanacsc490spring2020.augieathletics.ui.favTeams.FavoriteTeamFragment;
+
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+import static edu.augustanacsc490spring2020.augieathletics.MainActivity.user;
 
 public class GenericSportFragment extends Fragment {
 
@@ -43,8 +55,9 @@ public class GenericSportFragment extends Fragment {
     private GameAdapter adapterResults;
     private ArrayList<GameItems> parseResults = new ArrayList<>();
     private ProgressBar progressBar;
+    private CheckBox addToFavoritesBox;
+
     String dataResults="";
-    private TextView text_mBasket;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -63,8 +76,17 @@ public class GenericSportFragment extends Fragment {
             } else {
                 sportFormatGame = sportFormatRoster.substring(0, 1).toUpperCase() + sportFormatRoster.substring(1);
             }
-        }
 
+
+        }
+        addToFavoritesBox = root.findViewById(R.id.addToFavoritesCheckBox);
+
+        if (user.getFavoriteSportsAsList().contains(getArguments().getString("sportName"))) {
+            addToFavoritesBox.setChecked(true);
+        } else {
+            addToFavoritesBox.setChecked(false);
+        }
+        addToFavorites();
 
         progressBar = root.findViewById(R.id.Progress_barResults);
         recyclerViResults = root.findViewById(R.id.RecylerViewResults);
@@ -80,11 +102,12 @@ public class GenericSportFragment extends Fragment {
     }
 
     // Converts the roster into a format that will recognize sport in game feed.
-    private String rosterFormatConverter(String teamName) {
+    private String rosterFormatConverter(String teamName) { return null;  }
 
-        return null;
-    }
-
+    /**
+     * Adds an on click listener to the roster Button which sends the view to the RosterActivity
+     * @param view
+     */
     private void goToRoster(final View view) {
         rosterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +115,30 @@ public class GenericSportFragment extends Fragment {
                 Intent intent = new Intent(view.getContext(), RosterActivity.class);
                 intent.putExtras(getArguments());
                 startActivity(intent);
+            }
+        });
+    }
+
+    /**
+     * Adds the current sport to the favorites list based on whether or not the check box
+     * is checked.
+     * Pops up a toast saying if it was removed or added
+     */
+    private void addToFavorites() {
+
+        addToFavoritesBox.setOnClickListener(new View.OnClickListener() {
+            String sportName = getArguments().getString("sportName");
+            String toastMessage = "";
+            @Override
+            public void onClick(View addToFavorites) {
+                if (addToFavoritesBox.isChecked()) {
+                    user.addFavoriteSport(sportName);
+                    toastMessage = "Added to Favorite Teams";
+                } else {
+                    user.removeFavoriteSport(sportName);
+                    toastMessage = "Removed from Favorite Teams";
+                }
+                Toast.makeText(getActivity().getApplicationContext(), toastMessage, Toast.LENGTH_LONG).show();
             }
         });
     }

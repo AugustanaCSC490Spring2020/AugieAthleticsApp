@@ -9,13 +9,12 @@
 
     <Button
         android:id="@+id/rosterBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="377dp"
+        android:layout_height="43dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="goToRoster"
-        android:text="Roster"
+        android:text="@string/roster"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,9 +45,27 @@
         android:id="@+id/footerImg"
         android:layout_width="407dp"
         android:layout_height="83dp"
+        android:contentDescription="@string/footer_image"
         android:src="@drawable/augie_app_footer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/addToFavoritesCheckBox"
+        android:layout_width="33dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+
+        android:background="@android:color/transparent"
+        android:button="@android:drawable/btn_star"
+        android:checked="false"
+        android:padding="@dimen/activity_horizontal_margin"
+        app:layout_constraintBottom_toTopOf="@+id/RecylerViewResults"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toEndOf="@+id/rosterBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

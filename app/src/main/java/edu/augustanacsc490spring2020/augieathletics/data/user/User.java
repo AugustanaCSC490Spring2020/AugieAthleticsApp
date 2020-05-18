@@ -2,6 +2,7 @@ package edu.augustanacsc490spring2020.augieathletics.data.user;
 
 import android.util.Log;
 
+
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -10,34 +11,38 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class User {
 
     private FirebaseUser firebaseUser;
-    private ArrayList<String> favoriteSportsList;
+    private Set<String> favoriteSportsSet;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference userdbRef;
     private String child = "Favorite Sports List";
 
     public User(FirebaseUser firebaseUser) {
         this.firebaseUser = firebaseUser;
-        favoriteSportsList = new ArrayList<>();
+        favoriteSportsSet = new HashSet<>();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        userdbRef = firebaseDatabase.getReference(firebaseUser.getEmail().toString().replace('.',','));
+        userdbRef = firebaseDatabase.getReference(firebaseUser.getEmail().replace('.',','));
         setUpDatabaseReference();
     }
 
     public void addFavoriteSport(String sport) {
-        favoriteSportsList.add(sport);
-        userdbRef.child(child).setValue(favoriteSportsList);
-    }
-    public void setUpDatabaseReference() {
+        favoriteSportsSet.add(sport);
 
+        userdbRef.child(child).setValue(getFavoriteSportsAsList());
+    }
+
+    public void setUpDatabaseReference() {
         userdbRef.child(child).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot child : dataSnapshot.getChildren()) {
-                            favoriteSportsList.add(child.getValue().toString());
+                            favoriteSportsSet.add(child.getValue().toString());
                         }
                     }
 
@@ -49,11 +54,12 @@ public class User {
                 });
     }
     public FirebaseUser getFirebaseUser() {
+
         return firebaseUser;
     }
 
-    public ArrayList<String> getFavoriteSportsList() {
-        return favoriteSportsList;
+    public Set<String> getFavoriteSportsSet() {
+        return favoriteSportsSet;
     }
 
     public FirebaseDatabase getFirebaseDatabase() {
@@ -63,4 +69,20 @@ public class User {
     public DatabaseReference getUserdbRef() {
         return userdbRef;
     }
+
+    public void removeFavoriteSport(String sportName) {
+        favoriteSportsSet.remove(sportName);
+        userdbRef.child(child).setValue(getFavoriteSportsAsList().remove(sportName));
+    }
+
+    public String toString() {
+        return firebaseUser.getDisplayName() + ": " + favoriteSportsSet.toString();
+    }
+
+    public ArrayList<String> getFavoriteSportsAsList() {
+        ArrayList<String> favoriteTeamsAsList = new ArrayList<>();
+        favoriteTeamsAsList.addAll(favoriteSportsSet);
+        return favoriteTeamsAsList;
+    }
+
 }

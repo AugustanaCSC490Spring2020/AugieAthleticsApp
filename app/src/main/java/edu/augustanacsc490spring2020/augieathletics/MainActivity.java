@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView userName;
     private TextView userEmail;
     private FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-    private User user;
+    public static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
             userEmail.setText(firebaseUser.getEmail());
             userName.setText(firebaseUser.getDisplayName());
             user = new User(firebaseUser);
+            Log.d("boomtown", this.toString());
+
         }
 
     }
@@ -115,5 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    public User getUser() {
+        return user;
+    }
 
 }
